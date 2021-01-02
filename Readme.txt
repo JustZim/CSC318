@@ -1,11 +1,2 @@
-Admin
-mainAdmin.php
-NavbarAdmin.php
-
-Staff
-mainStaff.php
-navbarStaff.php
-
-Customer
-mainCustomer.php
-NavbarCustomer.php
+known bug list: 
+1. invalid login not showing up
