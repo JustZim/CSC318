@@ -230,7 +230,7 @@ input{
                   </td>
                 </tr>   
               </table>
-              <button type="submit" style="border-radius: 20px; " onclick="myFunction()">Login</button>
+              <button type="submit" style="border-radius: 20px; " onclick="return myFunction()">Login</button>
               <font color = "red"> 
                 <?php
                 if(isset($_SESSION["error"]))

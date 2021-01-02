@@ -13,7 +13,7 @@ body {
   background: #222;
   font-family: "HammersmithOne";
   font-weight: 600;
-  
+  z-index: -1;
 }
 
 .container-nav {
@@ -112,7 +112,7 @@ display: none;
 				elseif($_SESSION['rank'] == 1) {
 					echo "<li><a href='mainAdmin.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
-					echo "<li><a href='logout.php' target='contents' onclick='myFunction();'>Logout</a></li>";
+					echo "<li><a href='logout.php' target='contents' onclick='return myFunction();'>Logout</a></li>";
 					echo '<li><a style="color:white;">Hello '.($_SESSION["username"]).' </a></li> ';
 				}
 				
