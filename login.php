@@ -1,71 +1,4 @@
-<?php
 
-include "connect.php";
-  
-if(isset($_POST['sID'])) 
-{
-	$uname = $_POST['sID'];
-	$pass = $_POST['psw'];
-
-	$sql = "select * from STAFF where STAFF_ID = '".$uname."' AND STAFF_PASSWORD = '".$pass."' limit 1"; 
-	$result = mysqli_query($connect,$sql);
-	
-	$row = mysqli_fetch_assoc($result);
-	$pos = $row['Staff_Position'];
-	echo $pos;
- 
-	if(mysqli_num_rows($result) == 1) 
-	{
-		if($pos == "Administrator") 
-		{
-			header('Location: Admin/mainAdmin.php');
-			$_SESSION["username"] = $row['Staff_Name'];
-			$_SESSION["rank"] = 1;
-		}
-
-		elseif($pos == "Staff") 
-		{
-			header('Location: mainStaff.php');
-			$_SESSION["username"] = $row['Staff_Name'];
-			$_SESSION["rank"] = 2;
-		}
-		$_SESSION["userID"] = $uname;
-		exit();
-	}
-
-	/* CUSTOMER */
-	elseif(mysqli_num_rows($result) == 0)
-	{
-		$sql = "select * from CUSTOMER where Cust_IC = '".$uname."' AND Cust_Password = '".$pass."' limit 1"; 
-		$result = mysqli_query($connect,$sql);
-
-		$row = mysqli_fetch_assoc($result);
-
-		if(mysqli_num_rows($result) == 1) 
-		{
-			header('Location: mainCustomer.php');
-			$_SESSION["username"] = $row['Cust_Name'];
-			$_SESSION["userID"] = $uname;
-			$_SESSION["rank"] = 3;
-			exit();
-		}
-
-		else 
-		{
-			$_SESSION["error"] = "Invalid Login";
-			header('location: login.php');
-			exit();
-		}
-	} 
-
-	else 
-	{
-		$_SESSION["error"] = "Invalid Login";
-		header('location: login.php');
-		exit();
-	}
-}
-?>
 
 <style>
 
@@ -207,7 +140,7 @@ input{
 
       <center>
         <div id = 'box' style="background: rgba(240, 240, 240, 0.3); border-radius: 20px">
-          <form action="login.php" method="post" style="border-radius: 20px;">
+          <form action="login2.php" method="post" style="border-radius: 20px;">
             <div class="imgcontainer">
               <img src="assets/images/user.png" alt="Avatar" class="avatar">
             </div>
@@ -230,14 +163,12 @@ input{
                   </td>
                 </tr>   
               </table>
-              <button type="submit" style="border-radius: 20px; " onclick="return myFunction()">Login</button>
+              <button type="submit" style="border-radius: 20px;">Login</button>
               <font color = "red"> 
                 <?php
-                if(isset($_SESSION["error"]))
-                {
-                  echo ($_SESSION["error"]);
-                  unset ($_SESSION["error"]);
-                }?>
+				if(isset($_SESSION["error"])){
+					echo $_SESSION["error"];
+				}?>
               </font><br> 
               <label><input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
           </form>
@@ -249,8 +180,14 @@ input{
 </html> <!-- End of html -->
 
 <script>
-	function myFunction() 
+	function reloadNavbar() 
 	{
 		top.frames['header'].location.href = 'Navbar.php';
 	}
+	reloadNavbar();
 </script>
+
+<?php 
+if(isset($_SESSION["error"])){
+	unset ($_SESSION["error"]);
+}?>

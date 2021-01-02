@@ -1,8 +1,4 @@
-<script>
-/* Set Top header for Customer */
-top.frames['header'].location.href = 'Navbar.php';
-top.location.href = 'Navbar.php';
-</script>
+
 <?php 
 include "connect.php";
 session_start();
@@ -13,8 +9,12 @@ header('location: login.php');
 exit();
 ?>
 
+
 <script>
-/* Set Top header for Customer */
-top.frames['header'].location.href = 'Navbar.php';
-top.location.href = 'Navbar.php';
+	function reloadNavbar() 
+	{
+		top.frames['header'].location.href = 'Navbar.php';
+	}
+	reloadNavbar();
 </script>
+

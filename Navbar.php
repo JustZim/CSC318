@@ -13,7 +13,10 @@ body {
   background: #222;
   font-family: "HammersmithOne";
   font-weight: 600;
+<<<<<<< HEAD
   z-index: -1;
+=======
+>>>>>>> test
 }
 
 .container-nav {
@@ -110,23 +113,27 @@ display: none;
 				}
 				
 				elseif($_SESSION['rank'] == 1) {
-					echo "<li><a href='mainAdmin.php' target='contents'>Menu</a></li>";
+					echo "<li><a href='Admin/mainAdmin.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
+<<<<<<< HEAD
 					echo "<li><a href='logout.php' target='contents' onclick='return myFunction();'>Logout</a></li>";
+=======
+					echo "<li><a href='logout.php' target='contents'>Logout</a></li>";
+>>>>>>> test
 					echo '<li><a style="color:white;">Hello '.($_SESSION["username"]).' </a></li> ';
 				}
 				
 				elseif($_SESSION['rank'] == 2) {
 					echo "<li><a href='mainStaff.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
-					echo "<li><a href='logout.php' target='contents' onclick='myFunction();'>Logout</a></li>";
+					echo "<li><a href='logout.php' target='contents' onclick='reloadNavbar();'>Logout</a></li>";
 					echo '<li><a style="color:white;">Hello '.($_SESSION["username"]).' </a></li> ';
 				}
 				
 				elseif($_SESSION['rank'] == 3) {
-					echo "<li><a href='mainCustomer.php' target='contents'>Menu</a></li>";
+					echo "<li><a href='Customer/mainCustomer.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
-					echo "<li><a href='logout.php' target='contents' onclick='myFunction();'>Logout</a></li>";
+					echo "<li><a href='logout.php' target='contents' onclick='reloadNavbar();'>Logout</a></li>";
 					echo '<li><a style="color:white;">Hello '.($_SESSION["username"]).' </a></li> ';
 				}
 					
@@ -137,9 +144,11 @@ display: none;
 </head>
 </html>
 
-<script>
-	function myFunction() 
+<!--<script>
+	function reloadNavbar() 
 	{
 		top.frames['header'].location.href = 'Navbar.php';
 	}
-</script>
+	
+	reloadNavbar();
+</script>-->
