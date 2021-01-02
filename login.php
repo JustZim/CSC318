@@ -21,6 +21,9 @@ if(isset($_POST['sID']))
 			header('Location: Admin/mainAdmin.php');
 			$_SESSION["username"] = $row['Staff_Name'];
 			$_SESSION["rank"] = 1;
+			echo "<script>";
+			echo "reloadNavbar();";
+			echo "</script>";
 		}
 
 		elseif($pos == "Staff") 
@@ -28,6 +31,9 @@ if(isset($_POST['sID']))
 			header('Location: mainStaff.php');
 			$_SESSION["username"] = $row['Staff_Name'];
 			$_SESSION["rank"] = 2;
+			echo "<script>";
+			echo "reloadNavbar();";
+			echo "</script>";
 		}
 		$_SESSION["userID"] = $uname;
 		exit();
@@ -47,6 +53,9 @@ if(isset($_POST['sID']))
 			$_SESSION["username"] = $row['Cust_Name'];
 			$_SESSION["userID"] = $uname;
 			$_SESSION["rank"] = 3;
+			echo "<script>";
+			echo "reloadNavbar();";
+			echo "</script>";
 			exit();
 		}
 
@@ -62,6 +71,9 @@ if(isset($_POST['sID']))
 	{
 		$_SESSION["error"] = "Invalid Login";
 		header('location: login.php');
+		echo "<script>";
+		echo "reloadNavbar();";
+		echo "</script>";
 		exit();
 	}
 }
@@ -230,7 +242,7 @@ input{
                   </td>
                 </tr>   
               </table>
-              <button type="submit" style="border-radius: 20px; " onclick="myFunction()">Login</button>
+              <button type="submit" style="border-radius: 20px;" onclick="reloadNavbar()">Login</button>
               <font color = "red"> 
                 <?php
                 if(isset($_SESSION["error"]))
@@ -249,8 +261,9 @@ input{
 </html> <!-- End of html -->
 
 <script>
-	function myFunction() 
+	function reloadNavbar() 
 	{
 		top.frames['header'].location.href = 'Navbar.php';
 	}
+	reloadNavbar();
 </script>
