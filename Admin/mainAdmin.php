@@ -65,3 +65,11 @@ body {margin:0}
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->
+
+<script>
+	function reloadNavbar() 
+	{
+		top.frames['header'].location.href = '../Navbar.php';
+	}
+	reloadNavbar();
+</script>

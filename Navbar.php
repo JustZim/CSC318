@@ -109,7 +109,7 @@ display: none;
 				}
 				
 				elseif($_SESSION['rank'] == 1) {
-					echo "<li><a href='mainAdmin.php' target='contents'>Menu</a></li>";
+					echo "<li><a href='Admin/mainAdmin.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
 					echo "<li><a href='logout.php' target='contents'>Logout</a></li>";
 					echo '<li><a style="color:white;">Hello '.($_SESSION["username"]).' </a></li> ';
@@ -123,7 +123,7 @@ display: none;
 				}
 				
 				elseif($_SESSION['rank'] == 3) {
-					echo "<li><a href='mainCustomer.php' target='contents'>Menu</a></li>";
+					echo "<li><a href='Customer/mainCustomer.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
 					echo "<li><a href='logout.php' target='contents' onclick='reloadNavbar();'>Logout</a></li>";
 					echo '<li><a style="color:white;">Hello '.($_SESSION["username"]).' </a></li> ';

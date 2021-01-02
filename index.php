@@ -13,10 +13,3 @@
 	</frameset>
 </html>
 
-<script>
-	function reloadNavbar() 
-	{
-		top.frames['header'].location.href = 'Navbar.php';
-	}
-	reloadNavbar();
-</script>
