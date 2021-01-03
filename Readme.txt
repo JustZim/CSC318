@@ -1,11 +1,4 @@
-Admin
-mainAdmin.php
-NavbarAdmin.php
+Known bug :
 
-Staff
-mainStaff.php
-navbarStaff.php
-
-Customer
-mainCustomer.php
-NavbarCustomer.php
+1. Login error won't show up (prolly something has to do with frame)
+2. Admin/staff main page need to add padding, sidenav too close
