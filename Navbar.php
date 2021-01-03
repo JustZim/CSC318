@@ -101,13 +101,15 @@ display: none;
 			<ul>
 			<?php
 			include "connect.php";
-
+				
+				/*Not logged in*/
 				if($_SESSION['rank'] == 0) {
 					echo "<li><a href='main.html' target='contents'>Home</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
 					echo "<li><a href='login.php' target='contents'>Login</a></li>";
 				}
 				
+				/*Admin & Staff*/
 				elseif($_SESSION['rank'] == 1) {
 					echo "<li><a href='Admin/mainAdmin.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
@@ -116,19 +118,20 @@ display: none;
 				}
 				
 				elseif($_SESSION['rank'] == 2) {
-					echo "<li><a href='mainStaff.php' target='contents'>Menu</a></li>";
+					echo "<li><a href='Staff/mainStaff.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
-					echo "<li><a href='logout.php' target='contents' onclick='reloadNavbar();'>Logout</a></li>";
+					echo "<li><a href='logout.php' target='contents'>Logout</a></li>";
 					echo '<li><a style="color:white;">Hello '.($_SESSION["username"]).' </a></li> ';
 				}
-
+				
+				/*Customer*/
 				elseif($_SESSION['rank'] == 3) {
 					echo "<li><a href='Customer/mainCustomer.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
 					echo "<li><a href='logout.php' target='contents' onclick='reloadNavbar();'>Logout</a></li>";
 					echo '<li><a style="color:white;">Hello '.($_SESSION["username"]).' </a></li> ';
 				}
-					
+				
 			?>
 			</ul>
 		</nav>

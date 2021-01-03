@@ -25,7 +25,7 @@ if(isset($_POST['sID']))
 
 		elseif($pos == "Staff") 
 		{
-			header('Location: mainStaff.php');
+			header('Location: Staff/mainStaff.php');
 			$_SESSION["username"] = $row['Staff_Name'];
 			$_SESSION["rank"] = 2;
 		}
