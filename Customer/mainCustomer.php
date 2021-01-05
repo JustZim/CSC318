@@ -4,7 +4,7 @@
 /* Local Font */
 @font-face {
 font-family: "Barlow";
-src: url("assets/font/BarlowCondensed-Bold.ttf");
+src: url("../assets/font/BarlowCondensed-Bold.ttf");
 }
 
 /* font */
@@ -16,7 +16,7 @@ h4{
 
 /* Background Image */
 .bg-image {
-background-image: url("assets/images/bg2.png");
+background-image: url("../assets/images/bg2.png");
 background-color: #cccccc;
 height: 3000px;
 background-position: center;
@@ -51,11 +51,6 @@ body {margin:0}
 
 <!DOCTYPE html>
 <html>
-
-<script>
-/* Set Top header for Customer */
-top.frames['header'].location.href = 'NavbarCustomer.php';
-</script>
   <body>
     <!-- Background Image -->
     <div class="bg-image"><br><br>
