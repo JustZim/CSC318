@@ -96,55 +96,32 @@
 ?>
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
-		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Staff List</center></h1>
+		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Trainer List</center></h1>
 		<div class="register">
-			<input type='button' onclick='location.href="staffRegister.php"' value='Add new Staff'>
+			<input type='button' onclick='location.href="trainerRegister.php"' value='Add new Trainer'>
 		</div> <!-- register div -->
 
 		<center>
 			<table class="myTable">
 				<tr>
-				<th style="border-radius: 20px 0px 0px 0px">Staff ID</th>
-				<th>Staff Name</th>
-				<th>Staff Contact</th>
-				<th>Staff Address</th>
-				<th>Staff Email</th>
-				<th>Staff Position</th>
+				<th style="border-radius: 20px 0px 0px 0px">Trainer ID</th>
+				<th>Trainer Name</th>
+				<th>Trainer Details</th>
+				<th>Trainer Contact</th>
+				<th>Trainer Package</th>
 				<th style="border-radius: 0px 20px 0px 0px">     </th>
 				</tr>
 
 				<center>
-					<?php
-
-
-					include "../connect.php";
-					$sql = "select * from staff";
-					$result = mysqli_query($connect,$sql);
-					if(mysqli_num_rows($result) > 0) 
-					{
-					foreach($result as $row) { 
-					$sID = $row['Staff_ID'];
-					$sName = $row['Staff_Name'];
-					$sContact = $row['Staff_Contact'];
-					$sAddress = $row['Staff_Address'];
-					$sEmail = $row['Staff_Email'];
-					$sPos = $row['Staff_Position'];
-						
-					echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
-					echo"<td>$sID</td>";
-					echo"<td>$sName</td>";
-					echo"<td>$sContact</td>";
-					echo"<td>$sAddress</td>";
-					echo"<td>$sEmail</td>";
-					echo"<td>$sPos</td>";
-					echo"<td><input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Edit'>";
-					echo"<input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Delete'></td>";
-					echo"</tr>";
-					}
-				}
-				mysqli_close($connect);
-
-					?>
+					<tr style="color:white; text-shadow: 4px 4px 6px black ;">
+					<td>T01</td>
+					<td>Abah Boss </td>
+					<td>zumba,ketuk ketampi</td>
+					<td>011-0192784</td>
+					<td>Bronze</td>
+					<td><input type='button' onclick='location.href=\"staffedit.php?id=$ID\"' value='Edit'>
+					<input type='button' onclick='location.href=\"staffedit.php?id=$ID\"' value='Delete'></td>
+					</tr>
 				</center>
 			</table>
 		</center>

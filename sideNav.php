@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<style>
+
+		@font-face {
+   		    font-family: "HammersmithOne";
+  		    src: url("../assets/font/HammersmithOne-Regular.ttf");		 
+ 		}
 		.sidenav {
 			height: 100%;
 			width: 200px;
@@ -25,17 +30,18 @@
 		.sidenav a:hover {
 			color: #f1f1f1;
 		}
+
 	</style>
 	
 	<body> 
 		<div class="sidenav">
 			<?php
 				if($_SESSION['rank'] == '1') {
-					echo "<a href='staffPage.php'>Staff</a>";
+					echo "<a href='../admin/staffPage.php'>Staff</a>";
 				}	
-				echo "<a href='#services'>Customer</a>";
-				echo "<a href='#clients'>Trainer</a>";
-				echo "<a href='#contact'>Store/Product</a>";
+				echo "<a href='../staff/customerPage.php'>Customer</a>";
+				echo "<a href='../staff/trainerPage.php'>Trainer</a>";
+				echo "<a href='../staff/storePage.php'>Store/Product</a>";
 			?>
 		</div>
 	</body> 	

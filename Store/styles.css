@@ -203,21 +203,29 @@ html, body {
 }
 
 .shop-item {
-    margin: 25px;
+    margin: 30px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .shop-item-title {
     display: block;
-    width: 100%;
+    width: 75%;
     text-align: center;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1em;
     color: #333;
     margin-bottom: 15px;
+	word-wrap: break-word;
+
 }
 
 .shop-item-image {
     height: 250px;
+    width: 250px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .shop-item-details {
@@ -273,7 +281,7 @@ html, body {
 .cart-item-title {
     color: #333;
     margin-left: .5em;
-    font-size: 1.2em;
+    font-size: 1.0em;
 }
 
 .cart-item-image {

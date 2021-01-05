@@ -96,56 +96,62 @@
 ?>
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
-		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Staff List</center></h1>
+		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Store</center></h1>
 		<div class="register">
-			<input type='button' onclick='location.href="staffRegister.php"' value='Add new Staff'>
+			<input type='button' onclick='location.href="productRegister.php"' value='Add new Product'>
 		</div> <!-- register div -->
 
 		<center>
+
+
 			<table class="myTable">
 				<tr>
-				<th style="border-radius: 20px 0px 0px 0px">Staff ID</th>
-				<th>Staff Name</th>
-				<th>Staff Contact</th>
-				<th>Staff Address</th>
-				<th>Staff Email</th>
-				<th>Staff Position</th>
+				<th style="border-radius: 20px 0px 0px 0px">Product ID</th>
+				<th>Product Name</th>
+				<th>Product Image</th>
+				<th>Product Price</th>
+				<th>Product Description</th>
+				
 				<th style="border-radius: 0px 20px 0px 0px">     </th>
 				</tr>
 
 				<center>
-					<?php
+				<?php
 
 
 					include "../connect.php";
-					$sql = "select * from staff";
+					$sql = "select * from product";
 					$result = mysqli_query($connect,$sql);
 					if(mysqli_num_rows($result) > 0) 
 					{
 					foreach($result as $row) { 
-					$sID = $row['Staff_ID'];
-					$sName = $row['Staff_Name'];
-					$sContact = $row['Staff_Contact'];
-					$sAddress = $row['Staff_Address'];
-					$sEmail = $row['Staff_Email'];
-					$sPos = $row['Staff_Position'];
+					$pID = $row['Product_ID'];
+					$pName = $row['Product_Name'];
+					$pPrice = $row['Product_Price'];
+					$pDesc = $row['Product_Desc'];
+					$pImg = $row['Product_Img'];
 						
-					echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
-					echo"<td>$sID</td>";
-					echo"<td>$sName</td>";
-					echo"<td>$sContact</td>";
-					echo"<td>$sAddress</td>";
-					echo"<td>$sEmail</td>";
-					echo"<td>$sPos</td>";
-					echo"<td><input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Edit'>";
-					echo"<input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Delete'></td>";
+					
+					echo"<tr style='color:white; text-shadow: 4px 4px 6px black'>";
+					echo"<td>$pID</td>";
+					echo"<td>$pName</td>";
+					echo"<td>
+						<center><img src='$pImg' alt='Product' width='125' height='125'></center>
+					</td>";
+					echo"<td>$pPrice</td>";
+					echo"<td>$pDesc</td>";
+					echo"<td><input type='button' onclick='location.href=\"productEdit.php?id=$pID\"' value='Edit'>";
+					if($_SESSION['rank'] == '1') {
+					echo"<input type='button' onclick='location.href=\"productEdit.php?id=$pID\"' value='Delete'></td>";
+					}
+					
 					echo"</tr>";
 					}
 				}
 				mysqli_close($connect);
-
-					?>
+				?>
 				</center>
+				
 			</table>
 		</center>
 

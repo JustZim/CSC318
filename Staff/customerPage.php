@@ -96,58 +96,59 @@
 ?>
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
-		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Staff List</center></h1>
+		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Customer List</center></h1>
 		<div class="register">
-			<input type='button' onclick='location.href="staffRegister.php"' value='Add new Staff'>
+			<input type='button' onclick='location.href="customerRegister.php"' value='Add new Customer'>
 		</div> <!-- register div -->
 
 		<center>
 			<table class="myTable">
 				<tr>
-				<th style="border-radius: 20px 0px 0px 0px">Staff ID</th>
-				<th>Staff Name</th>
-				<th>Staff Contact</th>
-				<th>Staff Address</th>
-				<th>Staff Email</th>
-				<th>Staff Position</th>
+				<th style="border-radius: 20px 0px 0px 0px">Customer IC</th>
+				<th>Customer Name</th>
+				<th>Customer Address</th>
+				<th>Customer Email</th>
+				<th>Customer Date of birth</th>
+				<th>Customer Contact</th>
+				<th>Customer Gender</th>
 				<th style="border-radius: 0px 20px 0px 0px">     </th>
 				</tr>
 
 				<center>
 					<?php
-
-
 					include "../connect.php";
-					$sql = "select * from staff";
+					$sql = "select * from customer";
 					$result = mysqli_query($connect,$sql);
 					if(mysqli_num_rows($result) > 0) 
 					{
 					foreach($result as $row) { 
-					$sID = $row['Staff_ID'];
-					$sName = $row['Staff_Name'];
-					$sContact = $row['Staff_Contact'];
-					$sAddress = $row['Staff_Address'];
-					$sEmail = $row['Staff_Email'];
-					$sPos = $row['Staff_Position'];
-						
+					$cIC = $row['Cust_IC'];
+					$cName = $row['Cust_Name'];
+					$cContact = $row['Cust_Contact'];
+					$cEmail = $row['Cust_Email'];
+					$cAddress = $row['Cust_Address'];
+					$cDOB = $row['Cust_DOB'];
+					$cGender = $row['Cust_Gender'];
 					echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
-					echo"<td>$sID</td>";
-					echo"<td>$sName</td>";
-					echo"<td>$sContact</td>";
-					echo"<td>$sAddress</td>";
-					echo"<td>$sEmail</td>";
-					echo"<td>$sPos</td>";
-					echo"<td><input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Edit'>";
-					echo"<input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Delete'></td>";
+					echo"<td>$cIC</td>";
+					echo"<td>$cName</td>";
+					echo"<td>$cContact</td>";
+					echo"<td>$cAddress</td>";
+					echo"<td>$cDOB</td>";
+					echo"<td>$cGender</td>";	
+					echo"<td>$cGender</td>";
+					echo"<td><input type='button' onclick='location.href=\"staffedit.php?id=$cIC\"' value='Edit'>";
+					echo"<input type='button' onclick='location.href=\"staffedit.php?id=$cIC\"' value='Delete'></td>";
 					echo"</tr>";
 					}
 				}
 				mysqli_close($connect);
 
-					?>
+			?>
 				</center>
 			</table>
 		</center>
+			
 
 	</div> <!-- Image div -->
 </body> <!-- End of body -->
