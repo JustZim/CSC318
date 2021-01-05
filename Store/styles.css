@@ -222,12 +222,12 @@ html, body {
 
 .shop-item-details {
     display: flex;
-    align-items: center;
-    padding: 5px;
+	align-items: center;
+    padding: 2px;
 }
 
 .shop-item-price {
-    flex-grow: 1;
+	flex-glow: 1;
     color: #333;
 }
 

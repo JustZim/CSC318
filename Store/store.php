@@ -24,10 +24,10 @@
 							echo "<div class='shop-item'>";
 								echo "<span class='shop-item-title'>$Pname</span>";
 								echo "<img class='shop-item-image' src=$Pimg>";
-								echo "<div> <center>$Pdesc</center> </div>";
+								echo "<div><center> $Pdesc </center></div>";
 								echo "<div class='shop-item-details'>";
-									echo "<div class='shop-item-price'>RM$Pprice</div>";
-									echo "<div><button class='btn btn-primary shop-item-button' type='button'>ADD TO CART</button></div>";
+									echo "<span class='shop-item-price'>RM$Pprice</span>";
+									echo "<button class='btn btn-primary shop-item-button' type='button'>ADD TO CART</button>";
 								echo "</div>";
 							echo "</div>";
 						echo "</div>";
