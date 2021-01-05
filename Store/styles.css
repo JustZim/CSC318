@@ -203,7 +203,7 @@ html, body {
 }
 
 .shop-item {
-    margin: 30px;
+    margin: 25px;
 }
 
 .shop-item-title {
@@ -222,12 +222,12 @@ html, body {
 
 .shop-item-details {
     display: flex;
-	align-items: center;
-    padding: 2px;
+    align-items: center;
+    padding: 5px;
 }
 
 .shop-item-price {
-	flex-glow: 1;
+    flex-grow: 1;
     color: #333;
 }
 

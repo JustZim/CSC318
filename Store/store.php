@@ -9,18 +9,18 @@
         <script src="store.js" async></script>
     </head>
     <body>
-		<?php
-			$sql = "select * from product";
-			$result = mysqli_query($connect,$sql);
-			
-			if(mysqli_num_rows($result) > 0) {
-				foreach($result as $row) { 
-					$Pname = $row['Product_Name'];
-					$Pimg = $row['Product_Img'];
-					$Pprice = $row['Product_Price'];
-					$Pdesc = $row['Product_Desc'];
-					echo "<section class='container content-section'>";
-						echo "<div class='shop-items'>";
+		<section class="container content-section">
+			<div class="shop-items">
+				<?php
+					$sql = "select * from product";
+					$result = mysqli_query($connect,$sql);
+					
+					if(mysqli_num_rows($result) > 0) {
+						foreach($result as $row) { 
+							$Pname = $row['Product_Name'];
+							$Pimg = $row['Product_Img'];
+							$Pprice = $row['Product_Price'];
+							$Pdesc = $row['Product_Desc'];
 							echo "<div class='shop-item'>";
 								echo "<span class='shop-item-title'>$Pname</span>";
 								echo "<img class='shop-item-image' src=$Pimg>";
@@ -30,11 +30,12 @@
 									echo "<button class='btn btn-primary shop-item-button' type='button'>ADD TO CART</button>";
 								echo "</div>";
 							echo "</div>";
-						echo "</div>";
-					echo "</section>";
-				}
-			}
-        ?>
+						}
+					}
+				mysqli_close($connect);
+				?>
+			</div>
+		</section>
         <section class="container content-section">
             <h2 class="section-header">CART</h2>
             <div class="cart-row">
