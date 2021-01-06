@@ -1,4 +1,20 @@
 <?php session_start(); ?>
+<?php
+  include "../connect.php";
+  
+  $IC = $_GET['id'];
+  $sql = "SELECT * FROM Customer WHERE Cust_IC ='$IC'";
+  $result = mysqli_query($connect,$sql);  
+    foreach($result as $row) {
+      $cName = $row['Cust_Name'];
+      $cContact = $row['Cust_Contact'];
+      $cEmail = $row['Cust_Email'];
+      $cAddress = $row['Cust_Address'];
+      $cDOB  = $row['Cust_DOB'];
+      $cGender = $row['Cust_Gender'];
+    }   
+?>
+
 <style>
 
 /* Local Font */
@@ -140,17 +156,17 @@ input[type=submit]:hover {
    
     <!-- Background Image -->
     <div class="bg-image"><br><br>
-      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Customer Register</center></h1>
+      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Customer Edit</center></h1>
 
       
       <div class="container">
-        <form name="register" method="post" action="customerAdd.php">
+        <form name="register" method="post" action="customerUpdate.php">
           <div class="row">
             <div class="left-col">
               <label for="cIC">Customer IC</label>
             </div>
             <div class="right-col">
-              <input type="text"  name="cIC" placeholder="Enter Customer IC.." required>
+              <input type="text"  name="cIC" placeholder="Enter Customer IC.." required value="<?= $IC;?>"/>
             </div>
           </div>
           <div class="row">
@@ -158,7 +174,7 @@ input[type=submit]:hover {
               <label for="cName">Customer Name</label>
             </div>
             <div class="right-col">
-              <input type="text"  name="cName" placeholder="Enter Customer name.." required>
+              <input type="text"  name="cName" placeholder="Enter Customer name.." required value="<?= $cName;?>"/>
             </div>
           </div>
           <div class="row">
@@ -166,7 +182,7 @@ input[type=submit]:hover {
               <label for="cContact">Customer Contact</label>
             </div>
             <div class="right-col">
-              <input type="text" name="cContact" placeholder="Enter Customer Mobile Number.." required>
+              <input type="text" name="cContact" placeholder="Enter Customer Mobile Number.." required value="<?= $cContact;?>"/>
             </div>
           </div>
           <div class="row">
@@ -174,7 +190,7 @@ input[type=submit]:hover {
               <label for="cAddress">Customer Address</label>
             </div>
             <div class="right-col">
-              <textarea name="cAddress" placeholder="Enter Customer Address.." required style="height:100px"></textarea>
+              <textarea name="cAddress" placeholder="Enter Customer Address.."  style="height:100px" /><?=$cAddress;?></textarea>
             </div>
           </div>
           <div class="row">
@@ -182,7 +198,7 @@ input[type=submit]:hover {
               <label for="cEmail">Customer Email</label>
             </div>
             <div class="right-col">
-              <input type="text" name="cEmail" placeholder="Enter Customer email.." required>
+              <input type="text" name="cEmail" placeholder="Enter Customer email.." required value="<?= $cEmail;?>"/>
             </div>
           </div>
           <div class="row">
@@ -190,24 +206,26 @@ input[type=submit]:hover {
               <label for="cDOB">Customer Date of Birth</label>
             </div>
             <div class="right-col">
-              <input type="date" name="cDOB" placeholder="Enter Customer Date of Birth.." required>
+              <input type="date" name="cDOB" placeholder="Enter Customer Date of Birth.." required value="<?= $cDOB;?>"/>
             </div>
           </div>
           <div class="row">
             <div class="left-col">
-              <label for="cGender" required>Choose Customer Gender..</label>
+              <label for="cGender" required>Choose Customer Gender</label>
             </div>
             <div class="right-col">
-              <select  name="cGender">
+              <select name="cGender">
+                <option hidden value="<?php echo $cGender; ?>"  selected><?php echo $cGender; ?></option>
                 <option value="Male">Male</option>
-                <option value="Female">Female</option>           
-              </select>
+                <option value="Female">Female</option>
+            </select>
+            <input type="hidden" name="oldIC" required value="<?php echo $IC;?>">
             </div>
           </div>
           <div class="row">
             <br>
             <center><input name="cancel" type="button" value="Back" onclick ='location.href="customerPage.php"'>
-             <button class="button1">Register</button><br>
+             <button class="button1">Update</button><br>
              </center>
           </div>
         </form>  

@@ -139,7 +139,7 @@
 					echo"<td>$cAddress</td>";
 					echo"<td>$cDOB</td>";
 
-					echo"<td><input type='button' onclick='location.href=\"staffedit.php?id=$cIC\"' value='Edit'>";
+					echo"<td><input type='button' onclick='location.href=\"customerEdit.php?id=$cIC\"' value='Edit'>";
 					echo"<input type='button' onclick='location.href=\"staffedit.php?id=$cIC\"' value='Delete'></td>";
 					echo"</tr>";
 					}
