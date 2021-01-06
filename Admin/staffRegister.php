@@ -135,7 +135,7 @@ input[type=submit]:hover {
 
       
       <div class="container">
-        <form action="/action_page.php">
+        <form name="register" method="post" action="staffAdd.php">
           <div class="row">
             <div class="left-col">
               <label for="sID">Staff ID</label>
@@ -190,14 +190,24 @@ input[type=submit]:hover {
 
           <div class="row">
             <br>
-            <input type="submit" value="Submit">
+            <center><input name="cancel" type="button" value="Back" onclick ='location.href="staffPage.php"'>
+             <button class="button1">Register</button><br>
+            </center>
           </div>
         </form>
+        <?php
+          if(isset($_SESSION["status"])){
+          echo $_SESSION["status"];
+        }?> 
       
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->
 
+<?php 
+if(isset($_SESSION["status"])){
+  unset ($_SESSION["status"]);
+}?>
 <script>
   function reloadNavbar() 
   {

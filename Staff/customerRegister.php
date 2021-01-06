@@ -62,6 +62,14 @@ input[type=text], select, textarea {
   resize: vertical;
 }
 
+input[type=date]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
@@ -135,13 +143,13 @@ input[type=submit]:hover {
 
       
       <div class="container">
-        <form action="/action_page.php">
+        <form name="register" method="post" action="customerAdd.php">
           <div class="row">
             <div class="left-col">
-              <label for="cID">Customer IC</label>
+              <label for="cIC">Customer IC</label>
             </div>
             <div class="right-col">
-              <input type="text" id="cIC" name="customerIC" placeholder="Enter Customer IC..">
+              <input type="text"  name="cIC" placeholder="Enter Customer IC.." required>
             </div>
           </div>
           <div class="row">
@@ -149,7 +157,7 @@ input[type=submit]:hover {
               <label for="cName">Customer Name</label>
             </div>
             <div class="right-col">
-              <input type="text" id="cName" name="customerName" placeholder="Enter Customer name..">
+              <input type="text"  name="cName" placeholder="Enter Customer name.." required>
             </div>
           </div>
           <div class="row">
@@ -157,7 +165,7 @@ input[type=submit]:hover {
               <label for="cContact">Customer Contact</label>
             </div>
             <div class="right-col">
-              <input type="text" id="cContact" name="customerContact" placeholder="Enter Customer Mobile Number..">
+              <input type="text" name="cContact" placeholder="Enter Customer Mobile Number.." required>
             </div>
           </div>
           <div class="row">
@@ -165,7 +173,7 @@ input[type=submit]:hover {
               <label for="cAddress">Customer Address</label>
             </div>
             <div class="right-col">
-              <textarea id="cAddress" name="customerAddress" placeholder="Enter Customer Address.." style="height:100px"></textarea>
+              <textarea name="cAddress" placeholder="Enter Customer Address.." required style="height:100px"></textarea>
             </div>
           </div>
           <div class="row">
@@ -173,7 +181,7 @@ input[type=submit]:hover {
               <label for="cEmail">Customer Email</label>
             </div>
             <div class="right-col">
-              <input type="text" id="cEmail" name="customerEmail" placeholder="Enter Customer email..">
+              <input type="text" name="cEmail" placeholder="Enter Customer email.." required>
             </div>
           </div>
           <div class="row">
@@ -181,15 +189,15 @@ input[type=submit]:hover {
               <label for="cDOB">Customer Date of Birth</label>
             </div>
             <div class="right-col">
-              <input type="text" id="cDOB" name="customerDOB" placeholder="Enter Customer Date of Birth..">
+              <input type="date" name="cDOB" placeholder="Enter Customer Date of Birth.." required>
             </div>
           </div>
           <div class="row">
             <div class="left-col">
-              <label for="cGender">Choose Customer Gender..</label>
+              <label for="cGender" required>Choose Customer Gender..</label>
             </div>
             <div class="right-col">
-              <select id="cGender" name="customerGender">
+              <select  name="cGender">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>           
               </select>
@@ -197,12 +205,22 @@ input[type=submit]:hover {
           </div>
           <div class="row">
             <br>
-            <input type="submit" value="Submit">
+            <center><input name="cancel" type="button" value="Back" onclick ='location.href="customerPage.php"'>
+             <button class="button1">Register</button><br>
+            </center>
           </div>
-        </form>     
+        </form>  
+        <?php
+          if(isset($_SESSION["status"])){
+          echo $_SESSION["status"];
+        }?>   
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->
+<?php 
+if(isset($_SESSION["status"])){
+  unset ($_SESSION["status"]);
+}?>
 
 <script>
   function reloadNavbar() 

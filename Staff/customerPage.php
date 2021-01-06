@@ -104,13 +104,13 @@
 		<center>
 			<table class="myTable">
 				<tr>
-				<th style="border-radius: 20px 0px 0px 0px">Customer IC</th>
-				<th>Customer Name</th>
-				<th>Customer Address</th>
-				<th>Customer Email</th>
-				<th>Customer Date of birth</th>
-				<th>Customer Contact</th>
-				<th>Customer Gender</th>
+				<th style="border-radius: 20px 0px 0px 0px">IC Number</th>
+				<th>Name</th>
+				<th>Gender</th>
+				<th>Contact</th>
+				<th>Email</th>
+				<th>Address</th>
+				<th>Date of birth</th>
 				<th style="border-radius: 0px 20px 0px 0px">     </th>
 				</tr>
 
@@ -124,19 +124,21 @@
 					foreach($result as $row) { 
 					$cIC = $row['Cust_IC'];
 					$cName = $row['Cust_Name'];
+					$cGender = $row['Cust_Gender'];
 					$cContact = $row['Cust_Contact'];
 					$cEmail = $row['Cust_Email'];
 					$cAddress = $row['Cust_Address'];
 					$cDOB = $row['Cust_DOB'];
-					$cGender = $row['Cust_Gender'];
+	
 					echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
 					echo"<td>$cIC</td>";
 					echo"<td>$cName</td>";
+					echo"<td>$cGender</td>";
 					echo"<td>$cContact</td>";
+					echo"<td>$cEmail</td>";
 					echo"<td>$cAddress</td>";
 					echo"<td>$cDOB</td>";
-					echo"<td>$cGender</td>";	
-					echo"<td>$cGender</td>";
+
 					echo"<td><input type='button' onclick='location.href=\"staffedit.php?id=$cIC\"' value='Edit'>";
 					echo"<input type='button' onclick='location.href=\"staffedit.php?id=$cIC\"' value='Delete'></td>";
 					echo"</tr>";
