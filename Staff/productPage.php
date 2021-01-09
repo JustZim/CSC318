@@ -86,16 +86,32 @@
 		margin-bottom: 10px;
 	}
 
+	input[type=submit] {
+    background-color: #585d61;
+    color: white;
+    padding: 12px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    object-position: center;
+}
+
+input[type=submit]:hover {
+  background-color: #FFB450;
+}
+
 </style>
+
 
 <!DOCTYPE html>
 <html>
 
 <script>
-	function delFunction(cIC) {
+	function delFunction(pID) {
 		var r = confirm("Are you sure you want to delete this data?");
 		if(r == true) { 
-			location.href="customerDelete.php?id=" + cIC;
+			location.href="productDelete.php?id=" + pID;
 		}
 	}
 </script>
@@ -105,61 +121,64 @@
 ?>
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
-		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Customer List</center></h1>
+		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Store</center></h1>
 		<div class="register">
-			<input type='button' onclick='location.href="customerRegister.php"' value='Add new Customer'>
+			<input type='button' onclick='location.href="productRegister.php"' value='Add new Product'>
 		</div> <!-- register div -->
 
 		<center>
+
+
 			<table class="myTable">
 				<tr>
-				<th style="border-radius: 20px 0px 0px 0px">IC Number</th>
-				<th>Name</th>
-				<th>Gender</th>
-				<th>Contact</th>
-				<th>Email</th>
-				<th>Address</th>
-				<th>Date of birth</th>
+				<th style="border-radius: 20px 0px 0px 0px">Product ID</th>
+				<th>Product Name</th>
+				<th>Product Image</th>
+				<th>Product Price</th>
+				<th>Product Description</th>
+				
 				<th style="border-radius: 0px 20px 0px 0px">     </th>
 				</tr>
 
 				<center>
-					<?php
+				<?php
+
+
 					include "../connect.php";
-					$sql = "select * from customer";
+					$sql = "select * from product";
 					$result = mysqli_query($connect,$sql);
 					if(mysqli_num_rows($result) > 0) 
 					{
 					foreach($result as $row) { 
-					$cIC = $row['Cust_IC'];
-					$cName = $row['Cust_Name'];
-					$cGender = $row['Cust_Gender'];
-					$cContact = $row['Cust_Contact'];
-					$cEmail = $row['Cust_Email'];
-					$cAddress = $row['Cust_Address'];
-					$cDOB = $row['Cust_DOB'];
-	
-					echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
-					echo"<td>$cIC</td>";
-					echo"<td>$cName</td>";
-					echo"<td>$cGender</td>";
-					echo"<td>$cContact</td>";
-					echo"<td>$cEmail</td>";
-					echo"<td>$cAddress</td>";
-					echo"<td>$cDOB</td>";
-
-					echo"<td><input type='button' onclick='location.href=\"customerEdit.php?id=$cIC\"' value='Edit'>";
-					echo"<input type='button' onclick='delFunction(\"$cIC\")' value='Delete'></td>";
+					$pID = $row['Product_ID'];
+					$pName = $row['Product_Name'];
+					$pPrice = $row['Product_Price'];
+					$pDesc = $row['Product_Desc'];
+					$pImg = $row['Product_Img'];
+						
+					
+					echo"<tr style='color:white; text-shadow: 4px 4px 6px black'>";
+					echo"<td>$pID</td>";
+					echo"<td>$pName</td>";
+					echo"<td>
+						<center><img src='$pImg' alt='Product' width='125' height='125'></center>
+					</td>";
+					echo"<td>$pPrice</td>";
+					echo"<td>$pDesc</td>";
+					echo"<td><input type='button' onclick='location.href=\"productEdit.php?id=$pID\"' value='Edit'>";
+					if($_SESSION['rank'] == '1') {
+					echo"<input type='button' onclick='delFunction(\"$pID\")' value='Delete'></td>";
+					}
+					
 					echo"</tr>";
 					}
 				}
 				mysqli_close($connect);
-
-			?>
+				?>
 				</center>
+				
 			</table>
 		</center>
-			
 
 	</div> <!-- Image div -->
 </body> <!-- End of body -->

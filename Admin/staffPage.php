@@ -115,35 +115,38 @@
 
 				<center>
 					<?php
-
-
 					include "../connect.php";
 					$sql = "select * from staff";
 					$result = mysqli_query($connect,$sql);
 					if(mysqli_num_rows($result) > 0) 
 					{
-					foreach($result as $row) { 
-					$sID = $row['Staff_ID'];
-					$sName = $row['Staff_Name'];
-					$sContact = $row['Staff_Contact'];
-					$sAddress = $row['Staff_Address'];
-					$sEmail = $row['Staff_Email'];
-					$sPos = $row['Staff_Position'];
-						
-					echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
-					echo"<td>$sID</td>";
-					echo"<td>$sName</td>";
-					echo"<td>$sContact</td>";
-					echo"<td>$sAddress</td>";
-					echo"<td>$sEmail</td>";
-					echo"<td>$sPos</td>";
-					echo"<td><input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Edit'>";
-					echo"<input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Delete'></td>";
-					echo"</tr>";
+						foreach($result as $row) { 
+							$sID = $row['Staff_ID'];
+							$sName = $row['Staff_Name'];
+							$sContact = $row['Staff_Contact'];
+							$sAddress = $row['Staff_Address'];
+							$sEmail = $row['Staff_Email'];
+							$sPos = $row['Staff_Position'];
+								
+							echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+							echo"<td>$sID</td>";
+							echo"<td>$sName</td>";
+							echo"<td>$sContact</td>";
+							echo"<td>$sAddress</td>";
+							echo"<td>$sEmail</td>";
+							echo"<td>$sPos</td>";
+							echo"<td><input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Edit'>";
+							
+							if($sID != $_SESSION['userID']) {
+								echo"<input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Delete'></td>";
+							}
+							else{
+								echo"<input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Delete'disabled></td>";
+							}
+							echo"</tr>";
+						}
 					}
-				}
-				mysqli_close($connect);
-
+					mysqli_close($connect);
 					?>
 				</center>
 			</table>

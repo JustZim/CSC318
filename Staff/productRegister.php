@@ -135,13 +135,13 @@ input[type=submit]:hover {
 
       
       <div class="container">
-        <form action="/action_page.php">
+        <form name="register" method="post" action="productAdd.php">
           <div class="row">
             <div class="left-col">
               <label for="pID">Product ID</label>
             </div>
             <div class="right-col">
-              <input type="text" id="pID" name="productID" placeholder="Enter Product ID..">
+              <input type="text"  name="pID" placeholder="Enter Product ID..">
             </div>
           </div>
           <div class="row">
@@ -149,7 +149,7 @@ input[type=submit]:hover {
               <label for="pName">Product Name</label>
             </div>
             <div class="right-col">
-              <input type="text" id="pName" name="productName" placeholder="Enter product name..">
+              <input type="text"  name="pName" placeholder="Enter product name..">
             </div>
           </div>
           <div class="row">
@@ -157,7 +157,7 @@ input[type=submit]:hover {
               <label for="pImage">Product Image</label>
             </div>
             <div class="right-col">
-              <input type="text" id="pImage" name="trainerDetails" placeholder="Enter product Image..">
+              <input type="text"  name="pImage" placeholder="Enter product Image..">
             </div>
           </div>
           <div class="row">
@@ -165,7 +165,7 @@ input[type=submit]:hover {
               <label for="pPrice">Product Price</label>
             </div>
             <div class="right-col">
-              <input type="text" id="pPrice" name="productPrice" placeholder="Enter product price..">
+              <input type="text"  name="pPrice" placeholder="Enter product price..">
             </div>
           </div>
           <div class="row">
@@ -173,11 +173,7 @@ input[type=submit]:hover {
               <label for="pDesc">Product description</label>
             </div>
             <div class="right-col">
-               <select id="pDesc" name="productDesc">
-                <option value="Bronze">Bronze</option>
-                <option value="Silver">Silver</option>
-                <option value="Gold">Gold</option>
-                <option value="Platinum">Platinum</option>       
+              <input type="text"  name="pDesc" placeholder="Enter product Description..">  
               </select>
             </div>
           </div>
@@ -186,10 +182,18 @@ input[type=submit]:hover {
             <br>
             <input type="submit" value="Submit">
           </div>
-        </form>     
+        </form> 
+        <?php
+      if(isset($_SESSION["status"])){
+      echo $_SESSION["status"];
+    }?>       
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->
+<?php 
+if(isset($_SESSION["status"])){
+  unset ($_SESSION["status"]);
+}?>
 
 <script>
   function reloadNavbar() 

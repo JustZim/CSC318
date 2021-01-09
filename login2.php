@@ -29,7 +29,8 @@ if(isset($_POST['sID']))
 			$_SESSION["username"] = $row['Staff_Name'];
 			$_SESSION["rank"] = 2;
 		}
-		$_SESSION["userID"] = $uname;
+		$unameUP = strtoupper($uname);
+		$_SESSION["userID"] = $unameUP;
 		exit();
 	}
 
@@ -56,6 +57,8 @@ if(isset($_POST['sID']))
 			header('location: login.php');
 			exit();
 		}
+		$unameUP = strtoupper($uname);
+		$_SESSION["userID"] = $unameUP;
 	} 
 
 	else 

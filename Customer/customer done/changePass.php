@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php 
+	session_start();
+	include "../connect.php";
+	
+	$sqlQuery = "SELECT * FROM CUSTOMER WHERE Cust_IC = '".$_SESSION["userID"]."'" ;
+	$result = mysqli_query($connect, $sqlQuery);	
+	$data = mysqli_fetch_assoc($result);
+?>
 <style>
 
 /* Local Font */
@@ -54,12 +61,13 @@
   box-sizing: border-box;
 }
 
-input[type=text], select, textarea {
+input[type=text], select, textarea,input[type=date],input[type=password] {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 label {
@@ -67,17 +75,16 @@ label {
   display: inline-block;
 }
 
-input[type=submit] {
+.btn {
   background-color: #99aabb;
   color: white;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  float: right;
 }
 
-input[type=submit]:hover {
+.btn:hover {
   background-color: #FFB450;
 }
 
@@ -90,13 +97,13 @@ input[type=submit]:hover {
 
 .left-col {
   float: left;
-  width: 25%;
+  width: 15%;
   margin-top: 6px;
 }
 
 .right-col {
   float: left;
-  width: 75%;
+  width: 85%;
   margin-top: 6px;
 }
 
@@ -109,7 +116,7 @@ input[type=submit]:hover {
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-  .left-col, .right-col, input[type=submit] {
+  .left-col, .right-col, input[type=submit],input[type=date],input[type=password] {
     width: 100%;
     margin-top: 0;
   }
@@ -131,69 +138,42 @@ input[type=submit]:hover {
    
     <!-- Background Image -->
     <div class="bg-image"><br><br>
-      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Staff Register</center></h1>
-
       
-      <div class="container">
-        <form action="/action_page.php">
+       <div class="container">
+        <form method="POST" action="updatePass.php">
+          
           <div class="row">
             <div class="left-col">
-              <label for="sID">Staff ID</label>
+              <label>Enter new Password :</label>
             </div>
             <div class="right-col">
-              <input type="text" id="sID" name="staffID" placeholder="Enter Staff ID..">
+              <input type="password" name="newpass" placeholder="Enter New Password" required />
+            </div>
+          </div>
+		  <div class="row">
+            <div class="left-col">
+              <label>Confirm new Password :</label>
+            </div>
+            <div class="right-col">
+              <input type="password" name="confirmpass" placeholder="Enter New Password" required />
             </div>
           </div>
           <div class="row">
             <div class="left-col">
-              <label for="sName">Staff Name</label>
+              <label>Enter current password :</label>
             </div>
             <div class="right-col">
-              <input type="text" id="sName" name="staffName" placeholder="Enter Staff name..">
+              <input type="password" name="currentpass" placeholder="Enter Password to Confirm" required />
             </div>
           </div>
-          <div class="row">
-            <div class="left-col">
-              <label for="sContact">Staff Contact</label>
-            </div>
-            <div class="right-col">
-              <input type="text" id="sContact" name="staffContact" placeholder="Enter Staff Mobile Number..">
-            </div>
-          </div>
-          <div class="row">
-            <div class="left-col">
-              <label for="sAddress">Staff Address</label>
-            </div>
-            <div class="right-col">
-              <textarea id="sAddress" name="staffAddress" placeholder="Enter Staff Address.." style="height:100px"></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <div class="left-col">
-              <label for="sEmail">Staff Email</label>
-            </div>
-            <div class="right-col">
-              <input type="text" id="sEmail" name="staffEmail" placeholder="Enter Staff email..">
-            </div>
-          </div>
-          <div class="row">
-            <div class="left-col">
-              <label for="sPosition">Staff Position</label>
-            </div>
-            <div class="right-col">
-              <select id="sPosition" name="staffPosition">
-                <option value="Administrator">Administrator</option>
-                <option value="Staff">Staff</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row">
+          
+          
+          <div class="row"  style="text-align: right;">
             <br>
-            <input type="submit" value="Submit">
+			<input type="button" class="btn" onclick="history.back();" value='Cancel'>
+            <input type="submit" class="btn" value="Submit">
           </div>
-        </form>
-      
+        </form>     
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->

@@ -130,7 +130,7 @@ display: none;
 					echo "<li><a href='store/store.php' target='contents'>Store</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
 					echo "<li><a href='logout.php' target='contents' onclick='reloadNavbar();'>Logout</a></li>";
-					echo '<li><a style="color:white;">Hello '.($_SESSION["username"]).' </a></li> ';
+					echo "<li><a href='customer/profile.php' target='contents' style='color:white;'>Hello ".($_SESSION['username'])." </a></li> ";
 				}
 				
 			?>

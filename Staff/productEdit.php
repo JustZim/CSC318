@@ -1,4 +1,18 @@
 <?php session_start(); ?>
+<?php
+  include "../connect.php";
+  
+  $prodID = $_GET['id'];
+  $sql = "SELECT * FROM product WHERE Product_ID ='$prodID'";
+  $result = mysqli_query($connect,$sql);  
+    foreach($result as $row) {
+      $prodName = $row['Product_Name'];
+      $prodPrice = $row['Product_Price'];
+      $prodDesc = $row['Product_Desc'];
+      $prodImg = $row['Product_Img'];
+      
+    }   
+?>
 <style>
 
 /* Local Font */
@@ -61,6 +75,15 @@ input[type=text], select, textarea {
   border-radius: 4px;
   resize: vertical;
 }
+
+input[type=date]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+ 
+}
+
 
 label {
   padding: 12px 12px 12px 0;
@@ -131,72 +154,69 @@ input[type=submit]:hover {
    
     <!-- Background Image -->
     <div class="bg-image"><br><br>
-      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Staff Register</center></h1>
+      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Product Edit</center></h1>
 
       
-      <div class="container">
-        <form action="/action_page.php">
+     <div class="container">
+        <form name="register" method="post" action="productUpdate.php">
           <div class="row">
             <div class="left-col">
-              <label for="sID">Staff ID</label>
+              <label for="pID">Product ID</label>
             </div>
             <div class="right-col">
-              <input type="text" id="sID" name="staffID" placeholder="Enter Staff ID..">
+              <input type="text"  name="pID" placeholder="Enter Product ID.." required value="<?php echo $prodID;?>">
             </div>
           </div>
           <div class="row">
             <div class="left-col">
-              <label for="sName">Staff Name</label>
+              <label for="pName">Product Name</label>
             </div>
             <div class="right-col">
-              <input type="text" id="sName" name="staffName" placeholder="Enter Staff name..">
+              <input type="text"  name="pName" placeholder="Enter product name.." required value="<?php echo $prodName;?>">
             </div>
           </div>
           <div class="row">
             <div class="left-col">
-              <label for="sContact">Staff Contact</label>
+              <label for="pImage">Product Image</label>
             </div>
             <div class="right-col">
-              <input type="text" id="sContact" name="staffContact" placeholder="Enter Staff Mobile Number..">
+              <input type="text"  name="pImage" placeholder="Enter product Image.." required value="<?php echo $prodImg;?>">
             </div>
           </div>
           <div class="row">
             <div class="left-col">
-              <label for="sAddress">Staff Address</label>
+              <label for="pPrice">Product Price</label>
             </div>
             <div class="right-col">
-              <textarea id="sAddress" name="staffAddress" placeholder="Enter Staff Address.." style="height:100px"></textarea>
+              <input type="text"  name="pPrice" placeholder="Enter product price.." required value="<?php echo $prodPrice;?>">
             </div>
           </div>
           <div class="row">
             <div class="left-col">
-              <label for="sEmail">Staff Email</label>
+              <label for="pDesc">Product description</label>
             </div>
             <div class="right-col">
-              <input type="text" id="sEmail" name="staffEmail" placeholder="Enter Staff email..">
-            </div>
-          </div>
-          <div class="row">
-            <div class="left-col">
-              <label for="sPosition">Staff Position</label>
-            </div>
-            <div class="right-col">
-              <select id="sPosition" name="staffPosition">
-                <option value="Administrator">Administrator</option>
-                <option value="Staff">Staff</option>
+              <input type="text"  name="pDesc" placeholder="Enter product Description.." required value="<?php echo $prodDesc;?>">     
               </select>
             </div>
           </div>
-
+          <input type="hidden" name="oldID" required value="<?php echo $prodID;?>">
           <div class="row">
             <br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Update">
           </div>
-        </form>
-      
+        </form> 
+        <?php
+      if(isset($_SESSION["status"])){
+      echo $_SESSION["status"];
+    }?>       
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->
+<?php 
+if(isset($_SESSION["status"])){
+  unset ($_SESSION["status"]);
+}?>
 
 <script>
   function reloadNavbar() 

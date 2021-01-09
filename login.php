@@ -1,4 +1,6 @@
-
+<?php
+  include "connect.php";
+?>
 
 <style>
 
@@ -165,10 +167,10 @@ input{
               </table>
               <button type="submit" style="border-radius: 20px;">Login</button>
               <font color = "red"> 
-                <?php
-				if(isset($_SESSION["error"])){
-					echo $_SESSION["error"];
-				}?>
+              <?php
+								if(isset($_SESSION["error"])){
+									echo $_SESSION["error"];
+							  }?>
               </font><br> 
               <label><input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
           </form>
