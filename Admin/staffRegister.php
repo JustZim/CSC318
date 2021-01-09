@@ -135,7 +135,7 @@ input[type=submit]:hover {
 
       
       <div class="container">
-        <form action="/action_page.php">
+        <form action="staffAdd.php" method="post">
           <div class="row">
             <div class="left-col">
               <label for="sID">Staff ID</label>
@@ -193,6 +193,10 @@ input[type=submit]:hover {
             <input type="submit" value="Submit">
           </div>
         </form>
+        <?php
+          if(isset($_SESSION["status"])){
+            echo $_SESSION["status"];
+        }?> 
       
     </div> <!-- Image div -->
   </body> <!-- End of body -->
@@ -205,3 +209,7 @@ input[type=submit]:hover {
   }
   reloadNavbar();
 </script>
+<?php 
+  if(isset($_SESSION["status"])){
+    unset ($_SESSION["status"]);
+}?>

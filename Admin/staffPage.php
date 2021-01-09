@@ -138,7 +138,7 @@
 							echo"<td><input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Edit'>";
 							
 							if($sID != $_SESSION['userID']) {
-								echo"<input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Delete'></td>";
+								echo"<input type='button' onclick='delFunction(\"$sID\")' value='Delete'></td>";
 							}
 							else{
 								echo"<input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Delete'disabled></td>";
@@ -162,4 +162,11 @@
 		top.frames['header'].location.href = '../Navbar.php';
 	}
 	reloadNavbar();
+
+	function delFunction(sID) {
+        var r = confirm("Are you sure you want to remove this user ?");
+        if(r == true) { 
+            location.href="staffDelete.php?id=" + sID;
+        }
+    }
 </script>
