@@ -127,7 +127,7 @@
 							$sAddress = $row['Staff_Address'];
 							$sEmail = $row['Staff_Email'];
 							$sPos = $row['Staff_Position'];
-								
+							
 							echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
 							echo"<td>$sID</td>";
 							echo"<td>$sName</td>";
@@ -137,7 +137,7 @@
 							echo"<td>$sPos</td>";
 							echo"<td><input type='button' onclick='location.href=\"staffedit.php?id=$sID\"' value='Edit'>";
 							
-							if($sID != $_SESSION['userID']) {
+							if($sID != $_SESSION['userID'] && $sPos != "Administrator") {
 								echo"<input type='button' onclick='delFunction(\"$sID\")' value='Delete'></td>";
 							}
 							else{
@@ -146,6 +146,7 @@
 							echo"</tr>";
 						}
 					}
+					//echo $_SESSION['userID'];
 					mysqli_close($connect);
 					?>
 				</center>

@@ -38,9 +38,12 @@
 			<?php
 				if($_SESSION['rank'] == '1') {
 					echo "<a href='../admin/staffPage.php'>Staff</a>";
+					echo "<a href='../admin/trainerPage.php'>Trainer</a>";
+					echo "<a href='../admin/packagePage.php'>Package</a>";
 				}	
 				echo "<a href='../staff/customerPage.php'>Customer</a>";
-				echo "<a href='../staff/trainerPage.php'>Trainer</a>";
+				echo "<a href='../staff/membershipPage.php'>Membership</a>";
+				echo "<a href='../staff/coachingPage.php'>Coaching</a>";
 				echo "<a href='../staff/productPage.php'>Store/Product</a>";
 			?>
 		</div>

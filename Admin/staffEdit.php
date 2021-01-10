@@ -207,7 +207,7 @@ input[type=submit]:hover {
             </div>
             <d  iv class="right-col">
               <?php
-                if($sID != $_SESSION['userID']) {
+                if($sID != $_SESSION['userID'] && $sPos != "Administrator") {
                   echo "<select name='sPos'>";
                     echo "<option hidden value='$sPos'  selected> $sPos </option>";
                     echo "<option value='Administrator'>Administrator</option>";

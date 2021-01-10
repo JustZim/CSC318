@@ -126,8 +126,14 @@ input[type=submit]:hover {
 
   <body>
     <?php     
-     include "../sideNav.php";
-     ?>
+      include "../sideNav.php";
+      include "../connect.php";
+      $Ssql = "SELECT * FROM staff";
+      $staffresult = mysqli_query($connect, $Ssql);
+      
+      $Psql = "SELECT * FROM package";
+      $packageresult = mysqli_query($connect, $Psql);
+    ?>
    
     <!-- Background Image -->
     <div class="bg-image"><br><br>
@@ -135,37 +141,28 @@ input[type=submit]:hover {
 
       
       <div class="container">
-        <form action="/action_page.php">
+        <form action="trainerAdd.php" method="POST">
           <div class="row">
             <div class="left-col">
               <label for="tID">Trainer ID</label>
             </div>
             <div class="right-col">
-              <input type="text" id="tID" name="trainerID" placeholder="Enter trainer IC..">
+              <input type="text" id="tID" name="tID" placeholder="Enter trainer ID..">
             </div>
           </div>
           <div class="row">
             <div class="left-col">
-              <label for="tName">Trainer Name</label>
+              <label for="tContact">Staff ID</label>
             </div>
             <div class="right-col">
-              <input type="text" id="tName" name="trainerName" placeholder="Enter trainer name..">
-            </div>
-          </div>
-          <div class="row">
-            <div class="left-col">
-              <label for="tDetails">Trainer Details</label>
-            </div>
-            <div class="right-col">
-              <input type="text" id="tDetails" name="trainerDetails" placeholder="Enter trainer details..">
-            </div>
-          </div>
-          <div class="row">
-            <div class="left-col">
-              <label for="tContact">Trainer Contact</label>
-            </div>
-            <div class="right-col">
-              <input type="text" id="tContact" name="trainerContact" placeholder="Enter trainer contact..">
+              <select id="Staff_ID" name="sID">
+                <option value="" hidden>--Select One--</option>
+                  <?php
+                    while($Srow = mysqli_fetch_array($staffresult)) {
+                      echo '<option value='.$Srow['Staff_ID'].'>'.$Srow['Staff_ID'], ' - ', $Srow['Staff_Name'].'</option>';
+                    }
+                  ?>
+              </select>
             </div>
           </div>
           <div class="row">
@@ -173,12 +170,14 @@ input[type=submit]:hover {
               <label for="tPackage">Trainer Package</label>
             </div>
             <div class="right-col">
-               <select id="tPackage" name="trainerPackage">
-                <option value="Bronze">Bronze</option>
-                <option value="Silver">Silver</option>
-                <option value="Gold">Gold</option>
-                <option value="Platinum">Platinum</option>       
-              </select>
+              <select id="Pack_ID" name="pID">
+                <option value="" hidden>--Select One--</option>
+                  <?php
+                    while($Prow = mysqli_fetch_array($packageresult)) {
+                      echo '<option value='.$Prow['Pack_ID'].'>'.$Prow['Pack_ID'], ' - ', $Prow['Pack_Name'].'</option>';
+                    }
+                  ?>
+              </select></p>
             </div>
           </div>
           
@@ -186,7 +185,12 @@ input[type=submit]:hover {
             <br>
             <input type="submit" value="Submit">
           </div>
-        </form>     
+        </form> 
+        <?php
+          if(isset($_SESSION["status"])){
+          echo $_SESSION["status"];
+          unset ($_SESSION["status"]);
+        }?>    
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->

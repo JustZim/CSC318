@@ -26,9 +26,6 @@ background-size: cover;
 position: relative;
 }
 
-body {
- 
-}
 
 /* Hide Scrollbar */
 ::-webkit-scrollbar {

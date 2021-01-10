@@ -1,4 +1,22 @@
-<?php session_start(); ?>
+<?php 
+    session_start();
+    include "../connect.php";
+  
+    $tID = $_GET['id'];
+    $sql = "SELECT * FROM trainer WHERE Trainer_ID ='$tID'";
+    $result = mysqli_query($connect,$sql);  
+    foreach($result as $row) {
+      $sID = $row['Staff_ID'];
+      $pID = $row['Trainer_Package'];
+    }   
+
+    $Ssql = "SELECT * FROM staff";
+    $staffresult = mysqli_query($connect, $Ssql);
+      
+    $Psql = "SELECT * FROM package";
+    $packageresult = mysqli_query($connect, $Psql);
+?>
+
 <style>
 
 /* Local Font */
@@ -140,81 +158,64 @@ input[type=submit]:hover {
    
     <!-- Background Image -->
     <div class="bg-image"><br><br>
-      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Customer Register</center></h1>
+      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Trainer Edit</center></h1>
 
       
       <div class="container">
-        <form name="register" method="post" action="customerAdd.php">
+        <form name="register" method="post" action="trainerUpdate.php">
           <div class="row">
             <div class="left-col">
-              <label for="cIC">Customer IC</label>
+              <label for="sID">Trainer ID</label>
             </div>
             <div class="right-col">
-              <input type="text"  name="cIC" placeholder="Enter Customer IC.." required>
+             <input type="text"  name="tID" placeholder="Enter Trainer ID" required value="<?= $tID;?>" />
             </div>
           </div>
           <div class="row">
             <div class="left-col">
-              <label for="cName">Customer Name</label>
+              <label for="sPos">Staff ID</label>
             </div>
             <div class="right-col">
-              <input type="text"  name="cName" placeholder="Enter Customer name.." required>
+            <select id="Staff_ID" name="sID">
+                <?php
+                    echo "<option value='$sID' hidden>$sID</option>";
+                  
+                    while($Srow = mysqli_fetch_array($staffresult)) {
+                      echo '<option value='.$Srow['Staff_ID'].'>'.$Srow['Staff_ID'], ' - ', $Srow['Staff_Name'].'</option>';
+                    }
+                  ?>
+                </select>
             </div>
-          </div>
-          <div class="row">
+            <div class="row">
             <div class="left-col">
-              <label for="cContact">Customer Contact</label>
+              <label for="tPackage">Trainer Package</label>
             </div>
             <div class="right-col">
-              <input type="text" name="cContact" placeholder="Enter Customer Mobile Number.." required>
+              <select id="Pack_ID" name="pID">
+                <?php
+                    echo "<option value='$pID' hidden>$pID</option>";
+                  
+                    while($Prow = mysqli_fetch_array($packageresult)) {
+                      echo '<option value='.$Prow['Pack_ID'].'>'.$Prow['Pack_ID'], ' - ', $Prow['Pack_Name'].'</option>';
+                    }
+                ?>
+              </select></p>
             </div>
           </div>
-          <div class="row">
-            <div class="left-col">
-              <label for="cAddress">Customer Address</label>
-            </div>
-            <div class="right-col">
-              <textarea name="cAddress" placeholder="Enter Customer Address.." required style="height:100px"></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <div class="left-col">
-              <label for="cEmail">Customer Email</label>
-            </div>
-            <div class="right-col">
-              <input type="text" name="cEmail" placeholder="Enter Customer email.." required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="left-col">
-              <label for="cDOB">Customer Date of Birth</label>
-            </div>
-            <div class="right-col">
-              <input type="date" name="cDOB" placeholder="Enter Customer Date of Birth.." required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="left-col">
-              <label for="cGender" required>Choose Customer Gender..</label>
-            </div>
-            <div class="right-col">
-              <select  name="cGender">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>           
-              </select>
-            </div>
-          </div>
+          <!--<input type="hidden" name="tID" required value="<?php //echo $tID;?>">-->
+          <input type="hidden" name="oldID" required value="<?php echo $tID;?>">
+
           <div class="row">
             <br>
-            <center><input name="cancel" type="button" value="Back" onclick ='location.href="customerPage.php"'>
-             <button class="button1">Register</button><br>
+            <center><input name="cancel" type="button" value="Back" onclick ='location.href="trainerPage.php"'>
+             <button class="button1">Update</button><br>
              </center>
           </div>
         </form>  
         <?php
-          if(isset($_SESSION["status"])){
-            echo $_SESSION["status"];
-        }?>   
+      if(isset($_SESSION["status"])){
+      echo $_SESSION["status"];
+    }?>   
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->
