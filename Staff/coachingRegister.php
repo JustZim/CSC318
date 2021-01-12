@@ -1,22 +1,4 @@
-<?php 
-    session_start();
-    include "../connect.php";
-  
-    $tID = $_GET['id'];
-    $sql = "SELECT * FROM trainer WHERE Trainer_ID ='$tID'";
-    $result = mysqli_query($connect,$sql);  
-    foreach($result as $row) {
-      $sID = $row['Staff_ID'];
-      $pID = $row['Trainer_Package'];
-    }   
-
-    $Ssql = "SELECT * FROM staff";
-    $staffresult = mysqli_query($connect, $Ssql);
-      
-    $Psql = "SELECT * FROM package";
-    $packageresult = mysqli_query($connect, $Psql);
-?>
-
+<?php session_start(); ?>
 <style>
 
 /* Local Font */
@@ -72,7 +54,7 @@
   box-sizing: border-box;
 }
 
-input[type=text], select, textarea {
+input[type=text], [type=number], select, textarea, number {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -141,82 +123,113 @@ input[type=submit]:hover {
     margin-top: 0;
   }
 }
-
-
-
-
 </style>
 
 <!DOCTYPE html>
 <html>
-
-
   <body>
     <?php     
-     include "../sideNav.php";
-     ?>
+      include "../sideNav.php";
+      include "../connect.php";
+
+      $Msql = "SELECT * FROM membership
+      LEFT JOIN customer
+      ON membership.Customer_IC = customer.Cust_IC";
+      $memberresult = mysqli_query($connect, $Msql);
+
+      $Tsql = "SELECT * FROM trainer
+      LEFT JOIN staff
+      ON trainer.Staff_ID = staff.Staff_ID";
+      $trainerresult = mysqli_query($connect, $Tsql);
+
+      $Psql = "SELECT * FROM package";
+      $packageresult = mysqli_query($connect, $Psql);
+    ?>
    
     <!-- Background Image -->
     <div class="bg-image"><br><br>
-      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Trainer Edit</center></h1>
+      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Coaching Register</center></h1>
 
       
       <div class="container">
-        <form name="register" method="post" action="trainerUpdate.php">
-          <div class="row">
-            <div class="left-col">
-              <label for="sID">Trainer ID</label>
-            </div>
-            <div class="right-col">
-             <input type="text"  name="tID" placeholder="Enter Trainer ID" required value="<?= $tID;?>" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="left-col">
-              <label for="sPos">Staff ID</label>
-            </div>
-            <div class="right-col">
-            <select id="Staff_ID" name="sID">
-                <?php
-                    echo "<option value='$sID' hidden>$sID</option>";
-                  
-                    while($Srow = mysqli_fetch_array($staffresult)) {
-                      echo '<option value='.$Srow['Staff_ID'].'>'.$Srow['Staff_ID'], ' - ', $Srow['Staff_Name'].'</option>';
-                    }
-                  ?>
-                </select>
-            </div>
+        <form name="register" method="post" action="coachingAdd.php">
 
           <div class="row">
             <div class="left-col">
-              <label for="tPackage">Trainer Package</label>
+              <label for="cID">Coach ID</label>
+            </div>
+            <div class="right-col">
+              <input type="text"  name="cID" placeholder="Enter coach ID.." required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="left-col">
+              <label for="tID">Trainer ID</label>
+            </div>
+            <div class="right-col">
+              <select id="Trainer_ID" name="tID">
+                <option value="" hidden>--Select One--</option>
+                  <?php
+                    while($Trow = mysqli_fetch_array($trainerresult)) {
+                      echo '<option value='.$Trow['Trainer_ID'].'>'.$Trow['Trainer_ID'], ' - ', $Trow['Staff_Name'].'</option>';
+                    }
+                  ?>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="left-col">
+              <label for="mID">Member ID</label>
+            </div>
+            <div class="right-col">
+              <select id="Member_ID" name="mID">
+                <option value="" hidden>--Select One--</option>
+                  <?php
+                    while($Mrow = mysqli_fetch_array($memberresult)) {
+                      echo '<option value='.$Mrow['Member_ID'].'>'.$Mrow['Member_ID'], ' - ', $Mrow['Cust_Name'].'</option>';
+                    }
+                  ?>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="left-col">
+              <label for="pID">Package ID</label>
             </div>
             <div class="right-col">
               <select id="Pack_ID" name="pID">
-                <?php
-                    echo "<option value='$pID' hidden>$pID</option>";
-                  
+                <option value="" hidden>--Select One--</option>
+                  <?php
                     while($Prow = mysqli_fetch_array($packageresult)) {
                       echo '<option value='.$Prow['Pack_ID'].'>'.$Prow['Pack_ID'], ' - ', $Prow['Pack_Name'].'</option>';
                     }
-                ?>
-              </select></p>
+                  ?>
+              </select>
             </div>
           </div>
-          <!--<input type="hidden" name="tID" required value="<?php //echo $tID;?>">-->
-          <input type="hidden" name="oldID" required value="<?php echo $tID;?>">
+
+          <div class="row">
+            <div class="left-col">
+              <label for="cTR">Coach Training Remaining</label>
+            </div>
+            <div class="right-col">
+              <input type="number" name="cTR" placeholder="Enter from 1 to 30.." min="1" max="30" required>
+            </div>
+          </div>
 
           <div class="row">
             <br>
-            <center><input name="cancel" type="button" value="Back" onclick ='location.href="trainerPage.php"'>
-             <button class="button1">Update</button><br>
+            <input type="submit" value="Submit">
              </center>
           </div>
         </form>  
         <?php
-      if(isset($_SESSION["status"])){
-      echo $_SESSION["status"];
-    }?>   
+          if(isset($_SESSION["status"])){
+            echo $_SESSION["status"];
+        }?>   
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->

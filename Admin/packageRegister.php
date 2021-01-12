@@ -1,22 +1,4 @@
-<?php 
-    session_start();
-    include "../connect.php";
-  
-    $tID = $_GET['id'];
-    $sql = "SELECT * FROM trainer WHERE Trainer_ID ='$tID'";
-    $result = mysqli_query($connect,$sql);  
-    foreach($result as $row) {
-      $sID = $row['Staff_ID'];
-      $pID = $row['Trainer_Package'];
-    }   
-
-    $Ssql = "SELECT * FROM staff";
-    $staffresult = mysqli_query($connect, $Ssql);
-      
-    $Psql = "SELECT * FROM package";
-    $packageresult = mysqli_query($connect, $Psql);
-?>
-
+<?php session_start(); ?>
 <style>
 
 /* Local Font */
@@ -79,15 +61,6 @@ input[type=text], select, textarea {
   border-radius: 4px;
   resize: vertical;
 }
-
-input[type=date]{
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
- 
-}
-
 
 label {
   padding: 12px 12px 12px 0;
@@ -158,72 +131,48 @@ input[type=submit]:hover {
    
     <!-- Background Image -->
     <div class="bg-image"><br><br>
-      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Trainer Edit</center></h1>
+      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Package Register</center></h1>
 
       
       <div class="container">
-        <form name="register" method="post" action="trainerUpdate.php">
+        <form action="packageAdd.php" method="post">
           <div class="row">
             <div class="left-col">
-              <label for="sID">Trainer ID</label>
+              <label for="pID">package ID</label>
             </div>
             <div class="right-col">
-             <input type="text"  name="tID" placeholder="Enter Trainer ID" required value="<?= $tID;?>" />
+              <input type="text" id="pID" name="packageID" placeholder="Enter package ID..">
             </div>
           </div>
           <div class="row">
             <div class="left-col">
-              <label for="sPos">Staff ID</label>
+              <label for="pName">Package Name</label>
             </div>
             <div class="right-col">
-            <select id="Staff_ID" name="sID">
-                <?php
-                    echo "<option value='$sID' hidden>$sID</option>";
-                  
-                    while($Srow = mysqli_fetch_array($staffresult)) {
-                      echo '<option value='.$Srow['Staff_ID'].'>'.$Srow['Staff_ID'], ' - ', $Srow['Staff_Name'].'</option>';
-                    }
-                  ?>
-                </select>
-            </div>
-
-          <div class="row">
-            <div class="left-col">
-              <label for="tPackage">Trainer Package</label>
-            </div>
-            <div class="right-col">
-              <select id="Pack_ID" name="pID">
-                <?php
-                    echo "<option value='$pID' hidden>$pID</option>";
-                  
-                    while($Prow = mysqli_fetch_array($packageresult)) {
-                      echo '<option value='.$Prow['Pack_ID'].'>'.$Prow['Pack_ID'], ' - ', $Prow['Pack_Name'].'</option>';
-                    }
-                ?>
-              </select></p>
+              <input type="text" id="pName" name="packageName" placeholder="Enter package name..">
             </div>
           </div>
-          <!--<input type="hidden" name="tID" required value="<?php //echo $tID;?>">-->
-          <input type="hidden" name="oldID" required value="<?php echo $tID;?>">
-
+          <div class="row">
+            <div class="left-col">
+              <label for="pDesc">Package Description</label>
+            </div>
+            <div class="right-col">
+              <input type="text" id="pDesc" name="packageDesc" placeholder="Enter package description..">
+            </div>
+          </div>
           <div class="row">
             <br>
-            <center><input name="cancel" type="button" value="Back" onclick ='location.href="trainerPage.php"'>
-             <button class="button1">Update</button><br>
-             </center>
+            <input type="submit" value="Submit">
           </div>
-        </form>  
+        </form>
         <?php
-      if(isset($_SESSION["status"])){
-      echo $_SESSION["status"];
-    }?>   
+          if(isset($_SESSION["status"])){
+            echo $_SESSION["status"];
+        }?> 
+      
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->
-<?php 
-if(isset($_SESSION["status"])){
-  unset ($_SESSION["status"]);
-}?>
 
 <script>
   function reloadNavbar() 
@@ -232,3 +181,7 @@ if(isset($_SESSION["status"])){
   }
   reloadNavbar();
 </script>
+<?php 
+  if(isset($_SESSION["status"])){
+    unset ($_SESSION["status"]);
+}?>

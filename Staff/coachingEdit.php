@@ -1,20 +1,16 @@
-<?php 
-    session_start();
-    include "../connect.php";
+<?php session_start(); ?>
+<?php
+  include "../connect.php";
   
-    $tID = $_GET['id'];
-    $sql = "SELECT * FROM trainer WHERE Trainer_ID ='$tID'";
-    $result = mysqli_query($connect,$sql);  
+  $cID = $_GET['id'];
+  $sql = "SELECT * FROM coaching WHERE Coach_ID ='$cID'";
+  $result = mysqli_query($connect,$sql);  
     foreach($result as $row) {
-      $sID = $row['Staff_ID'];
-      $pID = $row['Trainer_Package'];
-    }   
-
-    $Ssql = "SELECT * FROM staff";
-    $staffresult = mysqli_query($connect, $Ssql);
+      $tID = $row['Trainer_ID'];
+      $mID = $row['Member_ID'];
+      $cTR = $row['Coach_TrainRemain'];
       
-    $Psql = "SELECT * FROM package";
-    $packageresult = mysqli_query($connect, $Psql);
+    }   
 ?>
 
 <style>
@@ -158,57 +154,46 @@ input[type=submit]:hover {
    
     <!-- Background Image -->
     <div class="bg-image"><br><br>
-      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Trainer Edit</center></h1>
+      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Customer Edit</center></h1>
 
       
       <div class="container">
-        <form name="register" method="post" action="trainerUpdate.php">
+        <form name="register" method="post" action="coachingEdit.php">
           <div class="row">
             <div class="left-col">
-              <label for="sID">Trainer ID</label>
+              <label for="cID">Coach ID</label>
             </div>
             <div class="right-col">
-             <input type="text"  name="tID" placeholder="Enter Trainer ID" required value="<?= $tID;?>" />
+              <input type="text"  name="cID" placeholder="Enter Coach ID.." required value="<?= $cID;?>"/>
             </div>
           </div>
           <div class="row">
             <div class="left-col">
-              <label for="sPos">Staff ID</label>
+              <label for="tID">Trainer ID</label>
             </div>
             <div class="right-col">
-            <select id="Staff_ID" name="sID">
-                <?php
-                    echo "<option value='$sID' hidden>$sID</option>";
-                  
-                    while($Srow = mysqli_fetch_array($staffresult)) {
-                      echo '<option value='.$Srow['Staff_ID'].'>'.$Srow['Staff_ID'], ' - ', $Srow['Staff_Name'].'</option>';
-                    }
-                  ?>
-                </select>
-            </div>
-
-          <div class="row">
-            <div class="left-col">
-              <label for="tPackage">Trainer Package</label>
-            </div>
-            <div class="right-col">
-              <select id="Pack_ID" name="pID">
-                <?php
-                    echo "<option value='$pID' hidden>$pID</option>";
-                  
-                    while($Prow = mysqli_fetch_array($packageresult)) {
-                      echo '<option value='.$Prow['Pack_ID'].'>'.$Prow['Pack_ID'], ' - ', $Prow['Pack_Name'].'</option>';
-                    }
-                ?>
-              </select></p>
+              <input type="text"  name="tID" placeholder="Enter trainer ID.." required value="<?= $tID;?>"/>
             </div>
           </div>
-          <!--<input type="hidden" name="tID" required value="<?php //echo $tID;?>">-->
-          <input type="hidden" name="oldID" required value="<?php echo $tID;?>">
-
+          <div class="row">
+            <div class="left-col">
+              <label for="mID">Member ID</label>
+            </div>
+            <div class="right-col">
+              <input type="text" name="mID" placeholder="Enter member ID.." required value="<?= $mID;?>"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="left-col">
+              <label for="cTR">Coach Training Remaining</label>
+            </div>
+            <div class="right-col">
+              <input type="text" name="cTR" placeholder="Coach Training Remaining.." required value="<?=$cTR;?>"/>
+            </div>
+          </div>
           <div class="row">
             <br>
-            <center><input name="cancel" type="button" value="Back" onclick ='location.href="trainerPage.php"'>
+            <center><input name="cancel" type="button" value="Back" onclick ='location.href="coachingEdit.php"'>
              <button class="button1">Update</button><br>
              </center>
           </div>
