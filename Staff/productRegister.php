@@ -176,11 +176,12 @@ input[type=submit]:hover {
               <input type="text"  name="pDesc" placeholder="Enter product Description..">  
               </select>
             </div>
-          </div>
+          </div></p>
           
           <div class="row">
-            <br>
-            <input type="submit" value="Submit">
+            <center><input name="cancel" type="button" value="Back" onclick ='location.href="storePage.php"'>
+              <button class="button1">Register</button><br>
+            </center>
           </div>
         </form> 
         <?php

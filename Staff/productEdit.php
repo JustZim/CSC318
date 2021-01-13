@@ -164,7 +164,7 @@ input[type=submit]:hover {
               <label for="pID">Product ID</label>
             </div>
             <div class="right-col">
-              <input type="text"  name="pID" placeholder="Enter Product ID.." required value="<?php echo $prodID;?>">
+              <input readonly type="text"  name="pID" placeholder="Enter Product ID.." required value="<?php echo $prodID;?>">
             </div>
           </div>
           <div class="row">
@@ -199,11 +199,12 @@ input[type=submit]:hover {
               <input type="text"  name="pDesc" placeholder="Enter product Description.." required value="<?php echo $prodDesc;?>">     
               </select>
             </div>
-          </div>
+          </div></p>
           <input type="hidden" name="oldID" required value="<?php echo $prodID;?>">
           <div class="row">
-            <br>
-            <input type="submit" value="Update">
+            <center><input name="cancel" type="button" value="Back" onclick ='location.href="membershipPage.php"'>
+             <button class="button1">Register</button><br>
+            </center>
           </div>
         </form> 
         <?php

@@ -159,10 +159,12 @@ input[type=submit]:hover {
             <div class="right-col">
               <input type="text" id="pDesc" name="packageDesc" placeholder="Enter package description..">
             </div>
-          </div>
+          </div></p>
+
           <div class="row">
-            <br>
-            <input type="submit" value="Submit">
+          <center><input name="cancel" type="button" value="Back" onclick ='location.href="packagePage.php"'>
+             <button class="button1">Register</button><br>
+          </center>
           </div>
         </form>
         <?php

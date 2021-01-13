@@ -162,8 +162,7 @@ input[type=submit]:hover {
               <label for="pID">Package ID</label>
             </div>
             <div class="right-col">
-             <input type="text"  name="pID" placeholder="Enter Package ID" required value="<?= $pID;?>" disabled/>
-             <input type="hidden"  name="pID" placeholder="Enter Package ID" required value="<?= $pID;?>"/>
+             <input type="text"  name="pID" placeholder="Enter Package ID" required value="<?= $pID;?>" readonly/>
             </div>
           </div>
           <div class="row">
@@ -186,7 +185,7 @@ input[type=submit]:hover {
             <br>
             <center><input name="cancel" type="button" value="Back" onclick ='location.href="packagePage.php"'>
              <button class="button1">Update</button><br>
-             </center>
+            </center>
           </div>
         </form>  
         <?php

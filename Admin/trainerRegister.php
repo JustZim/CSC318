@@ -182,8 +182,9 @@ input[type=submit]:hover {
           </div>
           
           <div class="row">
-            <br>
-            <input type="submit" value="Submit">
+          <center><input name="cancel" type="button" value="Back" onclick ='location.href="trainerPage.php"'>
+             <button class="button1">Register</button><br>
+          </center>
           </div>
         </form> 
         <?php

@@ -192,13 +192,12 @@ input[type=submit]:hover {
             <div class="right-col">
               <input type="date" name="expDate" placeholder="Enter Expire Date" required>
             </div>
-          </div>
+          </div></p>
 
           <div class="row">
-            <br>
             <center><input name="cancel" type="button" value="Back" onclick ='location.href="membershipPage.php"'>
              <button class="button1">Register</button><br>
-             </center>
+            </center>
           </div>
         </form>  
         <?php

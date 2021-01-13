@@ -108,24 +108,24 @@ display: none;
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
 					echo "<li><a href='login.php' target='contents'>Login</a></li>";
 				}
-				
+
 				/*Admin & Staff*/
 				elseif($_SESSION['rank'] == 1) {
 					echo "<li><a href='Admin/mainAdmin.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
 					echo "<li><a href='logout.php' target='contents'>Logout</a></li>";
-					echo '<li><a style="color:white;">Hello '.($_SESSION["username"]).' </a></li> ';
+					echo "<li><a href='staff/profileStaff.php' target='contents' style='color:white;'>Hello ".($_SESSION['username'])." </a></li> ";
 				}
 				
 				elseif($_SESSION['rank'] == 2) {
 					echo "<li><a href='Staff/mainStaff.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
 					echo "<li><a href='logout.php' target='contents'>Logout</a></li>";
-					echo '<li><a style="color:white;">Hello '.($_SESSION["username"]).' </a></li> ';
+					echo "<li><a href='staff/profileStaff.php' target='contents' style='color:white;'>Hello ".($_SESSION['username'])." </a></li> ";
 				}
 				
 				/*Customer*/
-				elseif($_SESSION['rank'] == 3) {
+				if($_SESSION['rank'] == 3) {
 					echo "<li><a href='Customer/mainCustomer.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='store/store.php' target='contents'>Store</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";

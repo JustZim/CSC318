@@ -165,8 +165,7 @@ input[type=submit]:hover {
               <label for="sID">Staff ID</label>
             </div>
             <div class="right-col">
-             <input type="text"  name="sID" placeholder="Enter Staff ID" required value="<?= $sID;?>" disabled/>
-             <input type="hidden"  name="sID" placeholder="Enter Staff ID" required value="<?= $sID;?>"/>
+             <input type="text"  name="sID" placeholder="Enter Staff ID" required value="<?= $sID;?>" readonly/>
             </div>
           </div>
           <div class="row">

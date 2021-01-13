@@ -209,21 +209,12 @@ input[type=submit]:hover {
                   ?>
               </select>
             </div>
-          </div>
+          </div></p>
 
           <div class="row">
-            <div class="left-col">
-              <label for="cTR">Coach Training Remaining</label>
-            </div>
-            <div class="right-col">
-              <input type="number" name="cTR" placeholder="Enter from 1 to 30.." min="1" max="30" required>
-            </div>
-          </div>
-
-          <div class="row">
-            <br>
-            <input type="submit" value="Submit">
-             </center>
+            <center><input name="cancel" type="button" value="Back" onclick ='location.href="coachingPage.php"'>
+              <button class="button1">Register</button><br>
+            </center>
           </div>
         </form>  
         <?php
