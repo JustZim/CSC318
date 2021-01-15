@@ -140,7 +140,7 @@ display: none;
 				if($_SESSION['rank'] == 3) {
 					echo "<li><a href='Customer/mainCustomer.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='store/store.php' target='contents'>Store</a></li>";
-					echo "<li><a href='Custcoaching.php' target='contents'>Coaching</a></li>";
+					echo "<li><a href='customer/Custcoaching.php' target='contents'>Coaching</a></li>";
 					echo "<li><a href='customer/profile.php' target='contents' style='color:white;'>Hello ".($_SESSION['username'])." </a></li> ";
 					echo "<a href='logout.php' target='contents'><img class='logout' src='assets/images/logout.png' width='35px' alt=''></a>";
 				}

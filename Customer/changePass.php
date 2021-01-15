@@ -90,21 +90,21 @@ label {
 
 .container {
   border-radius: 5px;
+  border: 10px solid #FFB450;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #f2f2f2;
-  padding: 20px;
-  margin:50px;
 }
 
 .left-col {
   float: left;
-  width: 15%;
-  margin-top: 6px;
+  width: 20%;
 }
 
 .right-col {
   float: left;
-  width: 85%;
-  margin-top: 6px;
+  width: 80%;
 }
 
 /* Clear floats after the columns */
@@ -137,7 +137,7 @@ label {
     <div class="bg-image"><br><br>
       
        <div class="container">
-        <form method="POST" action="updatePass.php">
+        <form style="padding: 30px;" method="POST" action="updatePass.php">
           
           <div class="row">
             <div class="left-col">
@@ -160,7 +160,7 @@ label {
               <label>Enter current password :</label>
             </div>
             <div class="right-col">
-              <input type="password" name="currentpass" placeholder="Enter Password to Confirm" required />
+              <input type="password" name="currentpass" placeholder="Enter current password" required />
             </div>
           </div>
           

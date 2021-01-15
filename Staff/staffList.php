@@ -18,7 +18,7 @@
 	.bg-image {
 		background-image: url("../assets/images/bg2.png");
 		background-color: #cccccc;
-		height: 1000px;
+		height: 3000px;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -82,52 +82,67 @@
 	.register { 
 		position: relative;
 		margin-top: 2%;
-		margin-left: 11%;
 		margin-bottom: 10px;
 	}
 
-	input[type=submit] {
-    background-color: #585d61;
-    color: white;
-    padding: 20px 50px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    object-position: center;
-}
-
-input[type=submit]:hover {
-  background-color: #FFB450;
-}
-
 </style>
-
 
 <!DOCTYPE html>
 <html>
-
-<script>
-	function delFunction(pID) {
-		var r = confirm("Are you sure you want to delete this data?");
-		if(r == true) { 
-			location.href="productDelete.php?id=" + pID;
-		}
-	}
-</script>
 <body>
 <?php 		
 	include "../sideNav.php";
 ?>
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
-		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Report</center></h1>
-	
+		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Staff List</center></h1>
+		<div class="register">
+		<center><label style="color:white; font-family: Verdana; font-size: 15px;">Staff Count:</label><input type="text" id="fname" name="fname" value=3></center>
+		<br><br>
+		</div> <!-- register div -->
 
 		<center>
-        <input type="submit"  onclick='location.href="memberList.php"' value="Member List"/>
-        <input type="submit"  onclick='location.href="trainerList.php"' value="Trainer List"/>
-        <input type="submit"  onclick='location.href="staffList.php"' value="Staff List"/>
+			<table class="myTable">
+				<tr>
+				<th style="border-radius: 20px 0px 0px 0px">Staff ID</th>
+				<th>Staff Name</th>
+				<th>Staff Contact</th>
+				<th>Staff Address</th>
+				<th>Staff Email</th>
+				<th style="border-radius: 0px 20px 0px 0px">Staff Position</th>
+				</tr>
+
+				<center>
+					<?php
+					include "../connect.php";
+					$sql = "select * from staff";
+					$result = mysqli_query($connect,$sql);
+					if(mysqli_num_rows($result) > 0) 
+					{
+						foreach($result as $row) { 
+							$sID = $row['Staff_ID'];
+							$sName = $row['Staff_Name'];
+							$sContact = $row['Staff_Contact'];
+							$sAddress = $row['Staff_Address'];
+							$sEmail = $row['Staff_Email'];
+							$sPos = $row['Staff_Position'];
+							
+							echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+							echo"<td>$sID</td>";
+							echo"<td>$sName</td>";
+							echo"<td>$sContact</td>";
+							echo"<td>$sAddress</td>";
+							echo"<td>$sEmail</td>";
+							echo"<td>$sPos</td>";
+					
+							echo"</tr>";
+						}
+					}
+					//echo $_SESSION['userID'];
+					mysqli_close($connect);
+					?>
+				</center>
+			</table>
 		</center>
 
 	</div> <!-- Image div -->
@@ -140,4 +155,11 @@ input[type=submit]:hover {
 		top.frames['header'].location.href = '../Navbar.php';
 	}
 	reloadNavbar();
+
+	function delFunction(sID) {
+        var r = confirm("Are you sure you want to remove this user ?");
+        if(r == true) { 
+            location.href="staffDelete.php?id=" + sID;
+        }
+    }
 </script>

@@ -90,9 +90,11 @@ label {
 
 .container {
   border-radius: 5px;
+  border: 10px solid #FFB450;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #f2f2f2;
-  padding: 20px;
-  margin:50px;
 }
 
 .left-col {
@@ -139,7 +141,7 @@ label {
 
       
        <div class="container">
-        <form method="POST" action="updateProfile.php">
+        <form style="padding: 20px;" method="POST" action="updateProfile.php">
           
           <div class="row">
             <div class="left-col">
@@ -154,7 +156,7 @@ label {
               <label>IC</label>
             </div>
             <div class="right-col">
-              <input type="text" id="IC" name="IC" placeholder="IC No." value="<?php echo $data["Cust_IC"];?>">
+              <input readonly type="text" id="IC" name="IC" placeholder="IC No." value="<?php echo $data["Cust_IC"];?>">
             </div>
           </div>
           <div class="row">

@@ -51,18 +51,39 @@
 	}
 	
 	.box {
-		width: 45%;
+		width: 60%;
+		display: table;
 		border: 15px solid #FFB450;
 		margin-left: auto;
 		margin-right: auto;
-		padding: 30px;
-		background: rgba(240, 240, 240, 0.3); 
+		background: rgba(240, 240, 240, 0.7); 
 		border-radius: 15px;
-		color:white;
-		overflow-wrap: break-word;
 		word-wrap: break-word;
-		text-align: center;
 	}
+	
+	.left-col {
+	  background-color: #f2f2f2;
+	  display: table-cell;
+	  padding: 15px;
+	  width: 25%;
+	  margin-top: 6px;
+	}
+
+	.right-col {
+	  background: #ebe6e6;
+	  display: table-cell;
+	  padding: 30px;
+	  width: auto;
+	  margin-top: 6px;
+	  vertical-align:top;
+	}
+
+	/* Clear floats after the columns */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}	
 	
 	.btn {
 		background-color: #99aabb;
@@ -87,8 +108,11 @@
 	
 	$cust_ic = $_SESSION["userID"];
 	$sql = "SELECT * FROM CUSTOMER WHERE Cust_IC = '$cust_ic'";
-	$result = $connect->query($sql);
-	$data = $result->fetch_assoc();
+	$result = mysqli_query($connect, $sql);
+	$data = mysqli_fetch_assoc($result);
+	
+	
+	$member = mysqli_fetch_assoc(mysqli_query($connect, "SELECT * FROM MEMBERSHIP WHERE Customer_IC = '$cust_ic'"));
 	
  ?>
 	<!-- Background Image -->
@@ -97,23 +121,37 @@
 		
 	<!-- Profile -->
 	<div class="box">
-		<div style="display: inline-block; text-align: left;">
-		<?php
-		
-			echo "<h3> Name	: ".$data["Cust_Name"]." </h3>"; 
-			echo "<h3> IC No	: ".$data["Cust_IC"]." </h3>"; 
-			echo "<h3> Contact No	: ".$data["Cust_Contact"]." </h3>"; 
-			echo "<h3> E-mail	: ".$data["Cust_Email"]." </h3>";
-			echo "<h3> Address	: ".$data["Cust_Address"]." </h3>"; 
-			echo "<h3> Birthdate	: ".$data["Cust_DOB"]." </h3>"; 
-			echo "<h3> Gender	: ".$data["Cust_Gender"]." </h3>"; 
-		
-		?>
-		</div>
-		<br>
-		<div style="text-align: right;">
-			<input type='button' class="btn" onclick='location.href="changePass.php"' value='Change Password'>
-			<input type='button' class="btn" onclick='location.href="editProfile.php"' value='Edit Profile'>
+		<div class="row">
+            <div class="left-col">
+			<image class="logo" src="../assets/images/user.png" width="200" alt="profile">
+			</div>
+			
+			 <div class="right-col">
+			<?php
+			
+				echo "<h2> PROFILE</h2>"; 
+				echo "<h3> Name	: ".$data["Cust_Name"]." </h3>"; 
+				echo "<h3> IC No	: ".$data["Cust_IC"]." </h3>"; 
+				echo "<h3> Contact No	: ".$data["Cust_Contact"]." </h3>"; 
+				echo "<h3> E-mail	: ".$data["Cust_Email"]." </h3>";
+				echo "<h3> Address	: ".$data["Cust_Address"]." </h3>"; 
+				echo "<h3> Birthdate	: ".$data["Cust_DOB"]." </h3>"; 
+				echo "<h3> Gender	: ".$data["Cust_Gender"]." </h3>"; 
+				
+				echo "<h2> MEMBERSHIP </h2>"; 
+				echo "<h3> Member ID	: ".$member["Member_ID"]." </h3>"; 
+				echo "<h3> Membership Package	: ".$member["Member_Package"]." </h3>"; 
+				echo "<h3> Membership Status	: ".$member["Customer_IC"]." </h3>"; 
+				echo "<h3> Membership Expiration Date	: ".$member["Member_ExpDate"]." </h3>";
+			
+			?>
+			<br><br>
+			<div style="text-align: right;">
+				<input type='button' class="btn" onclick='location.href="changePass.php"' value='Change Password'>
+				<input type='button' class="btn" onclick='location.href="editProfile.php"' value='Edit Profile'>
+			</div>
+			</div>
+
 		</div>
 		
 	</div><!-- box div -->

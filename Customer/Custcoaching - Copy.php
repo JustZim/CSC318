@@ -1,11 +1,15 @@
+
 <?php 
+/*
 	session_start();
 	include "../connect.php";
 	
 	$sqlQuery = "SELECT * FROM CUSTOMER WHERE Cust_IC = '".$_SESSION["userID"]."'" ;
 	$result = mysqli_query($connect, $sqlQuery);	
 	$data = mysqli_fetch_assoc($result);
+	*/
 ?>
+
 <style>
 
 /* Local Font */
@@ -44,7 +48,7 @@
     bottom: 0;
     background: rgba(0, 0, 0, 0);
     color: #f1f1f1;
-    width: 98%;
+    width: 100%;
     border-radius:30px 30px 0 0;
     justify-content: center;
     align-content: center;
@@ -54,7 +58,7 @@
 
   body {
     margin:0;
-    margin-left: 200px;
+    
   }
 
   * {
@@ -90,9 +94,11 @@ label {
 
 .container {
   border-radius: 5px;
+  border: 10px solid #FFB450;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #f2f2f2;
-  padding: 20px;
-  margin:50px;
 }
 
 .left-col {
@@ -116,7 +122,7 @@ label {
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-  .left-col, .right-col, input[type=submit],input[type=date],input[type=password] {
+  .left-col, .right-col, input[type=submit], input[type=date], input[type=password] {
     width: 100%;
     margin-top: 0;
   }
@@ -126,57 +132,87 @@ label {
 
 
 </style>
-
 <!DOCTYPE html>
 <html>
-
-
   <body>
-    <?php     
-     include "../sideNav.php";
-     ?>
+    <?php
+	/*
+      include "../sideNav.php";
+      include "../connect.php";
+
+      $Msql = "SELECT * FROM membership
+      LEFT JOIN customer
+      ON membership.Customer_IC = customer.Cust_IC";
+      $memberresult = mysqli_query($connect, $Msql);
+
+      $Tsql = "SELECT * FROM trainer
+      LEFT JOIN staff
+      ON trainer.Staff_ID = staff.Staff_ID";
+      $trainerresult = mysqli_query($connect, $Tsql);
+
+      $Psql = "SELECT * FROM package";
+      $packageresult = mysqli_query($connect, $Psql);
+	  */
+    ?>
    
     <!-- Background Image -->
     <div class="bg-image"><br><br>
+      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Book Coach</center></h1>
+
       
-       <div class="container">
-        <form method="POST" action="updatePass.php">
-          
+      <div class="container">
+        <form style="padding: 30px;" name="register" method="post" action="coachingAdd.php">
+
           <div class="row">
             <div class="left-col">
-              <label>Enter new Password :</label>
+              <label for="tID">Trainer </label>
             </div>
             <div class="right-col">
-              <input type="password" name="newpass" placeholder="Enter New Password" required />
+              <select id="Trainer_ID" name="tID">
+                <option value="" hidden>--Select One--</option>
+                  <?php/*
+                    while($Trow = mysqli_fetch_array($trainerresult)) {
+                      echo '<option value='.$Trow['Trainer_ID'].'>'.$Trow['Trainer_ID'], ' - ', $Trow['Staff_Name'].'</option>';
+                    } */
+                  ?>
+              </select>
             </div>
           </div>
-		  <div class="row">
-            <div class="left-col">
-              <label>Confirm new Password :</label>
-            </div>
-            <div class="right-col">
-              <input type="password" name="confirmpass" placeholder="Enter New Password" required />
-            </div>
-          </div>
+
           <div class="row">
             <div class="left-col">
-              <label>Enter current password :</label>
+              <label for="pID">Package </label>
             </div>
             <div class="right-col">
-              <input type="password" name="currentpass" placeholder="Enter Password to Confirm" required />
+              <select id="Pack_ID" name="pID">
+                <option value="" hidden>--Select One--</option>
+                  <?php/*
+                    while($Prow = mysqli_fetch_array($packageresult)) {
+                      echo '<option value='.$Prow['Pack_ID'].'>'.$Prow['Pack_ID'], ' - ', $Prow['Pack_Name'].'</option>';
+                    } */
+                  ?>
+              </select>
             </div>
+          </div></p>
+		  
+		  <br>
+          <div style="text-align: right;" class="row">
+            <input type='button' class="btn" onclick='location.href="history.back();' value='Back'>
+			<input type='button' class="btn" onclick='location.href="editProfile.php' value='Register'>
           </div>
-          
-          
-          <div class="row"  style="text-align: right;">
-            <br>
-			<input type="button" class="btn" onclick="history.back();" value='Cancel'>
-            <input type="submit" class="btn" value="Submit">
-          </div>
-        </form>     
+        </form>  
+        <?php/*
+          if(isset($_SESSION["status"])){
+            echo $_SESSION["status"];
+			*/
+        }?>   
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->
+<?php /*
+if(isset($_SESSION["status"])){
+  unset ($_SESSION["status"]);
+}*/?>
 
 <script>
   function reloadNavbar() 
