@@ -3,8 +3,8 @@
 > Major - 
 > 1. Finish up [Coaching] section. :white_check_mark: 
 > 2. Staff [Profile] page. :white_check_mark: 
-> 3. Customer [Coaching] page, customer can choose trainer.
-> 4. Staff [Report] page, can count earning based on member registration / coaching / package, can track how many Membership registration, etc.
+> 3. Customer [Coaching] page, customer can choose trainer. :red_square: (need to finish)
+> 4. Staff [Report] page, can count earning based on member registration / coaching / package, can track how many Membership registration, etc. :red_square: (need to finish) 
 > 
 > Minor - 
 > 1. Need to change <disabled> tag to <readonly> tag. :white_check_mark: 
@@ -29,13 +29,8 @@
 > 2. Admin/staff main page need to add padding, sidenav too close.
 > 3. Store image size varies, need to make it fixed size.`
 > ~~4. No cancel button on update / register page.~~
-> 5. Store item name is not centered.
-> 6. Status not centered in  staff/admin section.
-> 
->  
-> 
-> Fixed Bug : 
-> 
-> 1. store only shows 1 item per row, need to make multiple (min. 2) per row.
-> 2. Login error won't show up (prolly something to do with frame).
-> 3. Price text in store spacing not right.
+> ~~5. Store item name is not centered.~~
+> ~~6. Status not centered in  staff/admin section.~~
+> ~~7. store only shows 1 item per row, need to make multiple (min. 2) per row.~~
+> ~~8. Login error won't show up (prolly something to do with frame).~~
+> ~~9. Price text in store spacing not right.~~
