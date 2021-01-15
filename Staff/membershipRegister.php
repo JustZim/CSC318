@@ -176,23 +176,27 @@ input[type=submit]:hover {
             <div class="right-col">
               <select id="Pack_ID" name="pID">
                 <option value="" hidden>--Select One--</option>
-                  <?php
+                <option value="Gold">Gold</option>
+                <option value="Silver">Silver</option>
+                <option value="Bronze">Bronze</option>
+                  <!--<?php
+                    /*
                     while($Prow = mysqli_fetch_array($packageresult)) {
                       echo '<option value='.$Prow['Pack_ID'].'>'.$Prow['Pack_ID'], ' - ', $Prow['Pack_Name'].'</option>';
-                    }
-                  ?>
+                    }*/
+                  ?>-->
               </select>
             </div>
-          </div>
+          </div></p>
 
-          <div class="row">
+         <!-- <div class="row">
             <div class="left-col">
               <label for="cDOB">Membership Expire Date</label>
             </div>
             <div class="right-col">
               <input type="date" name="expDate" placeholder="Enter Expire Date" required>
             </div>
-          </div></p>
+          </div></p>-->
 
           <div class="row">
             <center><input name="cancel" type="button" value="Back" onclick ='location.href="membershipPage.php"'>
@@ -200,10 +204,12 @@ input[type=submit]:hover {
             </center>
           </div>
         </form>  
+        <center>
         <?php
           if(isset($_SESSION["status"])){
             echo $_SESSION["status"];
         }?>   
+        </center>
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->

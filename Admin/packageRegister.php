@@ -141,7 +141,7 @@ input[type=submit]:hover {
               <label for="pID">package ID</label>
             </div>
             <div class="right-col">
-              <input type="text" id="pID" name="packageID" placeholder="Enter package ID..">
+              <input type="text" id="pID" name="packageID" placeholder="Enter package ID.." required>
             </div>
           </div>
           <div class="row">
@@ -149,7 +149,7 @@ input[type=submit]:hover {
               <label for="pName">Package Name</label>
             </div>
             <div class="right-col">
-              <input type="text" id="pName" name="packageName" placeholder="Enter package name..">
+              <input type="text" id="pName" name="packageName" placeholder="Enter package name.." required>
             </div>
           </div>
           <div class="row">
@@ -157,7 +157,7 @@ input[type=submit]:hover {
               <label for="pDesc">Package Description</label>
             </div>
             <div class="right-col">
-              <input type="text" id="pDesc" name="packageDesc" placeholder="Enter package description..">
+              <input type="text" id="pDesc" name="packageDesc" placeholder="Enter package description.." required>
             </div>
           </div></p>
 
@@ -167,10 +167,12 @@ input[type=submit]:hover {
           </center>
           </div>
         </form>
+        <center>
         <?php
           if(isset($_SESSION["status"])){
             echo $_SESSION["status"];
         }?> 
+        </center>
       
     </div> <!-- Image div -->
   </body> <!-- End of body -->

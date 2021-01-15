@@ -184,7 +184,7 @@ input[type=submit]:hover {
             <div class="right-col">
               <select id="Trainer_ID" name="tID">
                 <?php
-                    echo "<option value='$tID' hidden>$tID - nama</option>";
+                    echo "<option value='$tID' hidden>$tID</option>";
                   
                     while($Trow = mysqli_fetch_array($trainerresult)) {
                       echo '<option value='.$Trow['Trainer_ID'].'>'.$Trow['Trainer_ID'], ' - ', $Trow['Staff_Name'].'</option>';
@@ -201,7 +201,7 @@ input[type=submit]:hover {
             <div class="right-col">
               <select id="Member_ID" name="mID">
                   <?php
-                    echo "<option value='$mID' hidden>$mID - nama</option>";
+                    echo "<option value='$mID' hidden>$mID</option>";
 
                     while($Mrow = mysqli_fetch_array($memberresult)) {
                       echo '<option value='.$Mrow['Member_ID'].'>'.$Mrow['Member_ID'], ' - ', $Mrow['Cust_Name'].'</option>';
@@ -218,7 +218,7 @@ input[type=submit]:hover {
             <div class="right-col">
               <select id="Pack_ID" name="pID">
                   <?php
-                    echo "<option value='$pID' hidden>$pID - nama</option>";
+                    echo "<option value='$pID' hidden>$pID</option>";
                     
                     while($Prow = mysqli_fetch_array($packageresult)) {
                       echo '<option value='.$Prow['Pack_ID'].'>'.$Prow['Pack_ID'], ' - ', $Prow['Pack_Name'].'</option>';
@@ -241,13 +241,15 @@ input[type=submit]:hover {
             <br>
             <center><input name="cancel" type="button" value="Back" onclick ='location.href="coachingPage.php"'>
              <button class="button1">Update</button><br>
-             </center>
+            </center>
           </div>
         </form>  
+        <center>
         <?php
-      if(isset($_SESSION["status"])){
-      echo $_SESSION["status"];
-    }?>   
+          if(isset($_SESSION["status"])){
+          echo $_SESSION["status"];
+        }?> 
+        </center>  
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->

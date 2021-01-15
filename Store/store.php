@@ -22,8 +22,10 @@
 							$Pprice = $row['Product_Price'];
 							$Pdesc = $row['Product_Desc'];
 							echo "<div class='shop-item'>";
+								echo "<center>";
 								echo "<span class='shop-item-title'>$Pname</span>";
-								echo "<img class='shop-item-image' src=$Pimg>";
+								echo "<img class='shop-item-image' src=$Pimg id='imagesize'>";
+								echo "</center>";
 								echo "<div><center> $Pdesc </center></div>";
 								echo "<div class='shop-item-details'>";
 									echo "<span class='shop-item-price'>RM$Pprice</span>";

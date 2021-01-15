@@ -141,7 +141,7 @@ input[type=submit]:hover {
               <label for="sID">Staff ID</label>
             </div>
             <div class="right-col">
-              <input type="text" id="sID" name="staffID" placeholder="Enter Staff ID..">
+              <input type="text" id="sID" name="staffID" placeholder="Enter Staff ID.." required>
             </div>
           </div>
           <div class="row">
@@ -149,7 +149,7 @@ input[type=submit]:hover {
               <label for="sName">Staff Name</label>
             </div>
             <div class="right-col">
-              <input type="text" id="sName" name="staffName" placeholder="Enter Staff name..">
+              <input type="text" id="sName" name="staffName" placeholder="Enter Staff name.." required>
             </div>
           </div>
           <div class="row">
@@ -157,7 +157,7 @@ input[type=submit]:hover {
               <label for="sContact">Staff Contact</label>
             </div>
             <div class="right-col">
-              <input type="text" id="sContact" name="staffContact" placeholder="Enter Staff Mobile Number..">
+              <input type="text" id="sContact" name="staffContact" placeholder="Enter Staff Mobile Number.." required>
             </div>
           </div>
           <div class="row">
@@ -165,7 +165,7 @@ input[type=submit]:hover {
               <label for="sAddress">Staff Address</label>
             </div>
             <div class="right-col">
-              <textarea id="sAddress" name="staffAddress" placeholder="Enter Staff Address.." style="height:100px"></textarea>
+              <textarea id="sAddress" name="staffAddress" placeholder="Enter Staff Address.." style="height:100px" required></textarea>
             </div>
           </div>
           <div class="row">
@@ -173,7 +173,7 @@ input[type=submit]:hover {
               <label for="sEmail">Staff Email</label>
             </div>
             <div class="right-col">
-              <input type="text" id="sEmail" name="staffEmail" placeholder="Enter Staff email..">
+              <input type="text" id="sEmail" name="staffEmail" placeholder="Enter Staff email.." required>
             </div>
           </div>
           <div class="row">
@@ -194,10 +194,12 @@ input[type=submit]:hover {
             </center>
           </div>
         </form>
+        <center>
         <?php
           if(isset($_SESSION["status"])){
             echo $_SESSION["status"];
         }?> 
+        </center>
       
     </div> <!-- Image div -->
   </body> <!-- End of body -->

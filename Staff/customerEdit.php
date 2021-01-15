@@ -226,13 +226,15 @@ input[type=submit]:hover {
             <br>
             <center><input name="cancel" type="button" value="Back" onclick ='location.href="customerPage.php"'>
              <button class="button1">Update</button><br>
-             </center>
+            </center>
           </div>
-        </form>  
+        </form> 
+        <center> 
         <?php
-      if(isset($_SESSION["status"])){
-      echo $_SESSION["status"];
-    }?>   
+          if(isset($_SESSION["status"])){
+          echo $_SESSION["status"];
+        }?> 
+        </center>  
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->

@@ -45,6 +45,7 @@
 				echo "<a href='../staff/membershipPage.php'>Membership</a>";
 				echo "<a href='../staff/coachingPage.php'>Coaching</a>";
 				echo "<a href='../staff/productPage.php'>Store/Product</a>";
+				echo "<a href='../staff/reportPage.php'>Report</a>";
 			?>
 		</div>
 	</body> 	

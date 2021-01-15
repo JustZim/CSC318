@@ -202,15 +202,17 @@ input[type=submit]:hover {
           </div></p>
           <input type="hidden" name="oldID" required value="<?php echo $prodID;?>">
           <div class="row">
-            <center><input name="cancel" type="button" value="Back" onclick ='location.href="membershipPage.php"'>
-             <button class="button1">Register</button><br>
+            <center><input name="cancel" type="button" value="Back" onclick ='location.href="productPage.php"'>
+             <button class="button1">Update</button><br>
             </center>
           </div>
         </form> 
+        <center>
         <?php
-      if(isset($_SESSION["status"])){
-      echo $_SESSION["status"];
-    }?>       
+          if(isset($_SESSION["status"])){
+          echo $_SESSION["status"];
+        }?>
+        </center>       
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->

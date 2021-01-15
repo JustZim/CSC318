@@ -96,7 +96,7 @@
 ?>
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
-		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Package List</center></h1>
+		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Training Package List</center></h1>
 		<div class="register">
 			<input type='button' onclick='location.href="packageRegister.php"' value='Add new Package'>
 		</div> <!-- register div -->

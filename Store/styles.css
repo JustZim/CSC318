@@ -222,10 +222,17 @@ html, body {
 .shop-item-image {
     height: 250px;
     width: 250px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+	/*margin-left: auto;
+	margin-right: auto;*/
 }
+
+#imagesize  {  
+    width:200px;  
+    height:200px;  
+} 
 
 .shop-item-details {
     display: flex;

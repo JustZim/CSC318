@@ -40,6 +40,20 @@ header::after {
   padding: 0px 10px;
 }
 
+.logout {
+	float: right;
+	padding: 20px 10px 1px 40px;
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.logout:hover{
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+}
+
 nav {
   float: right;
 }
@@ -70,7 +84,7 @@ nav a:hover {
 
 nav a::before {
   content: '';
-  display: block;
+  /*display: block;*/
   height: 5px;
   background-color: #6b6b6b;
   position: absolute;
@@ -80,7 +94,7 @@ nav a::before {
 }
 
 nav a:hover::before {
-  width: 100%;
+  /*width: 100%;*/
 }
 /* End of Navigation Bar Style */
 
@@ -112,28 +126,26 @@ display: none;
 				/*Admin & Staff*/
 				elseif($_SESSION['rank'] == 1) {
 					echo "<li><a href='Admin/mainAdmin.php' target='contents'>Menu</a></li>";
-					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
-					echo "<li><a href='logout.php' target='contents'>Logout</a></li>";
 					echo "<li><a href='staff/profileStaff.php' target='contents' style='color:white;'>Hello ".($_SESSION['username'])." </a></li> ";
+					echo "<a href='logout.php' target='contents'><img class='logout' src='assets/images/logout.png' width='35px' alt=''></a>";
 				}
 				
 				elseif($_SESSION['rank'] == 2) {
 					echo "<li><a href='Staff/mainStaff.php' target='contents'>Menu</a></li>";
-					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
-					echo "<li><a href='logout.php' target='contents'>Logout</a></li>";
 					echo "<li><a href='staff/profileStaff.php' target='contents' style='color:white;'>Hello ".($_SESSION['username'])." </a></li> ";
+					echo "<a href='logout.php' target='contents'><img class='logout' src='assets/images/logout.png' width='35px' alt=''></a>";
 				}
 				
 				/*Customer*/
 				if($_SESSION['rank'] == 3) {
 					echo "<li><a href='Customer/mainCustomer.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='store/store.php' target='contents'>Store</a></li>";
-					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
-					echo "<li><a href='logout.php' target='contents' onclick='reloadNavbar();'>Logout</a></li>";
+					echo "<li><a href='Custcoaching.php' target='contents'>Coaching</a></li>";
 					echo "<li><a href='customer/profile.php' target='contents' style='color:white;'>Hello ".($_SESSION['username'])." </a></li> ";
+					echo "<a href='logout.php' target='contents'><img class='logout' src='assets/images/logout.png' width='35px' alt=''></a>";
 				}
-				
 			?>
+			<!--<a href='logout.php' target='contents'><img class='logout' src='assets/images/logout.png' width='50px' alt=''></a>-->
 			</ul>
 		</nav>
 	</div>

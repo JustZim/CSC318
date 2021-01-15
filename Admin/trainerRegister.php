@@ -187,11 +187,13 @@ input[type=submit]:hover {
           </center>
           </div>
         </form> 
+        <center>
         <?php
           if(isset($_SESSION["status"])){
           echo $_SESSION["status"];
           unset ($_SESSION["status"]);
-        }?>    
+        }?>   
+        </center> 
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->

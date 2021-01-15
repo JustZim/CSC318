@@ -141,7 +141,7 @@ input[type=submit]:hover {
               <label for="pID">Product ID</label>
             </div>
             <div class="right-col">
-              <input type="text"  name="pID" placeholder="Enter Product ID..">
+              <input type="text"  name="pID" placeholder="Enter Product ID.." required>
             </div>
           </div>
           <div class="row">
@@ -149,7 +149,7 @@ input[type=submit]:hover {
               <label for="pName">Product Name</label>
             </div>
             <div class="right-col">
-              <input type="text"  name="pName" placeholder="Enter product name..">
+              <input type="text"  name="pName" placeholder="Enter product name.." required>
             </div>
           </div>
           <div class="row">
@@ -157,7 +157,7 @@ input[type=submit]:hover {
               <label for="pImage">Product Image</label>
             </div>
             <div class="right-col">
-              <input type="text"  name="pImage" placeholder="Enter product Image..">
+              <input type="text"  name="pImage" placeholder="Enter product Image.." required>
             </div>
           </div>
           <div class="row">
@@ -165,7 +165,7 @@ input[type=submit]:hover {
               <label for="pPrice">Product Price</label>
             </div>
             <div class="right-col">
-              <input type="text"  name="pPrice" placeholder="Enter product price..">
+              <input type="text"  name="pPrice" placeholder="Enter product price.." required>
             </div>
           </div>
           <div class="row">
@@ -173,7 +173,7 @@ input[type=submit]:hover {
               <label for="pDesc">Product description</label>
             </div>
             <div class="right-col">
-              <input type="text"  name="pDesc" placeholder="Enter product Description..">  
+              <input type="text"  name="pDesc" placeholder="Enter product Description.." required>  
               </select>
             </div>
           </div></p>

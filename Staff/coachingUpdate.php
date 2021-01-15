@@ -12,10 +12,11 @@
     echo $coachID;
     echo $trainerID;
     echo $memberID;
+    echo $packID;
     echo $coachTrainRemain;
 
     $update = "UPDATE `coaching` SET `Coach_ID`='$coachID',`Trainer_ID`='$trainerID',
-    `Coach_TrainRemain`='$coachTrainRemain' WHERE `coaching`.`Coach_ID`='$coachID' ";
+    `Coach_TrainRemain`='$coachTrainRemain', `Member_ID`='$memberID', `Pack_ID`='$packID' WHERE `coaching`.`Coach_ID`='$coachID' ";
 
     $exec = mysqli_query($connect,$update);
 

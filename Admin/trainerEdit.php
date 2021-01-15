@@ -168,7 +168,7 @@ input[type=submit]:hover {
               <label for="sID">Trainer ID</label>
             </div>
             <div class="right-col">
-             <input type="text"  name="tID" placeholder="Enter Trainer ID" required value="<?= $tID;?>" />
+             <input readonly type="text"  name="tID" placeholder="Enter Trainer ID" required value="<?= $tID;?>" />
             </div>
           </div>
           <div class="row">
@@ -210,13 +210,15 @@ input[type=submit]:hover {
             <br>
             <center><input name="cancel" type="button" value="Back" onclick ='location.href="trainerPage.php"'>
              <button class="button1">Update</button><br>
-             </center>
+            </center>
           </div>
-        </form>  
+        </form> 
+        <center> 
         <?php
-      if(isset($_SESSION["status"])){
-      echo $_SESSION["status"];
-    }?>   
+          if(isset($_SESSION["status"])){
+          echo $_SESSION["status"];
+        }?> 
+        </center>  
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->

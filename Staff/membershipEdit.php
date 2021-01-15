@@ -185,11 +185,10 @@ input[type=submit]:hover {
                     <select id="Pack_ID" name="pID">
                         <?php
                         echo "<option value='$mPack' hidden>$mPack</option>";
-
-                        while($Prow = mysqli_fetch_array($packageresult)) {
-                        echo '<option value='.$Prow['Pack_ID'].'>'.$Prow['Pack_ID'], ' - ', $Prow['Pack_Name'].'</option>';
-                        }
                         ?>
+                        <option value="Gold">Gold</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Bronze">Bronze</option>
                     </select>
                 </div>
             </div>
@@ -221,13 +220,15 @@ input[type=submit]:hover {
             <br>
             <center><input name="cancel" type="button" value="Back" onclick ='location.href="membershipPage.php"'>
              <button class="button1">Update</button><br>
-             </center>
+            </center>
           </div>
         </form>  
+        <center>
         <?php
-      if(isset($_SESSION["status"])){
-      echo $_SESSION["status"];
-    }?>   
+          if(isset($_SESSION["status"])){
+          echo $_SESSION["status"];
+        }?>   
+        </center>
     </div> <!-- Image div -->
   </body> <!-- End of body -->
 </html> <!-- End of html -->
