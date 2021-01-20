@@ -1,223 +1,166 @@
-
-<?php 
-/*
-	session_start();
-	include "../connect.php";
-	
-	$sqlQuery = "SELECT * FROM CUSTOMER WHERE Cust_IC = '".$_SESSION["userID"]."'" ;
-	$result = mysqli_query($connect, $sqlQuery);	
-	$data = mysqli_fetch_assoc($result);
-	*/
-?>
-
+<?php session_start(); ?>
 <style>
 
-/* Local Font */
-  @font-face {
-    font-family: "Barlow";
-    src: url("../assets/font/BarlowCondensed-Bold.ttf");
-  }
+	/* Local Font */
+	@font-face {
+		font-family: "Barlow";
+		src: url("../assets/font/BarlowCondensed-Bold.ttf");
+	}
 
-  /* font */
-  h4{
-    font-family: "Barlow";
-    font-size: 20px;
-  }
-  /* font */
+	/* font */
+	h4{
+		font-family: "Barlow";
+		font-size: 20px;
+	}
+	/* font */
 
-  /* Background Image */
-  .bg-image {
-    background-image: url("../assets/images/bg2.png");
-    background-color: #cccccc;
-    height: 1000px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  }
-  /* Background Image */
+	/* Background Image */
+	.bg-image {
+		background-image: url("../assets/images/bg2.png");
+		background-color: #cccccc;
+		height: 1200px;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		position: relative;
+	}
+	/* Background Image */
 
-  /* Hide Scrollbar */
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  /* Hide Scrollbar */
+	/* Hide Scrollbar */
+	::-webkit-scrollbar {
+		display: none;
+	}
+	/* Hide Scrollbar */
 
-  /* Content */
-  .content {
-    bottom: 0;
-    background: rgba(0, 0, 0, 0);
-    color: #f1f1f1;
-    width: 100%;
-    border-radius:30px 30px 0 0;
-    justify-content: center;
-    align-content: center;
-    margin: 0px 20px;
-  }
-  /* Content */
+	/* Content */
+	.content {
+		bottom: 0;
+		background: rgba(0, 0, 0, 0);
+		color: #f1f1f1;
+		width: 98%;
+		border-radius:30px 30px 0 0;
+		justify-content: center;
+		align-content: center;
+		margin: 0px 20px;
+	}
+	/* Content */
 
-  body {
-    margin:0;
-    
-  }
+	body {
+		margin:0;
+	}
 
-  * {
-  box-sizing: border-box;
-}
+	.myTable { 
+		table-layout:fixed ;
+		width: 60% ;
+		background: rgba(240, 240, 240, 0.3); 
+		border-radius: 20px 20px 0px 0px;
+		font-family: Verdana, sans-serif;
+		font-size: 15px;
+		color:black;
+		text-align: center;
+	}
+	
+	.myTable th { 
+		font-family: Verdana, sans-serif;text-shadow: 1px 1px 4px black;
+		font-size: 20px;
+		height: 30px;
+		letter-spacing:0.05em;
+		background-color:#FFB450;
+		color:white;
+		text-align: center;
+	}
+	
+	.myTable td, .myTable th { 
+		padding:5px;
+		border:1px solid #BDB76B; 
+		overflow-wrap: break-word;
+		word-wrap: break-word;
+		text-align: center;
+	}
 
-input[type=text], select, textarea,input[type=date],input[type=password] {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-
-.btn {
-  background-color: #99aabb;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #FFB450;
-}
-
-.container {
-  border-radius: 5px;
-  border: 10px solid #FFB450;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #f2f2f2;
-}
-
-.left-col {
-  float: left;
-  width: 15%;
-  margin-top: 6px;
-}
-
-.right-col {
-  float: left;
-  width: 85%;
-  margin-top: 6px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .left-col, .right-col, input[type=submit], input[type=date], input[type=password] {
-    width: 100%;
-    margin-top: 0;
-  }
-}
-
-
-
+	.register { 
+		position: relative;
+		margin-top: 2%;
+		margin-left: 11%;
+		margin-bottom: 10px;
+	}
 
 </style>
+
 <!DOCTYPE html>
 <html>
-  <body>
-    <?php
-	/*
-      include "../sideNav.php";
-      include "../connect.php";
-
-      $Msql = "SELECT * FROM membership
-      LEFT JOIN customer
-      ON membership.Customer_IC = customer.Cust_IC";
-      $memberresult = mysqli_query($connect, $Msql);
-
-      $Tsql = "SELECT * FROM trainer
-      LEFT JOIN staff
-      ON trainer.Staff_ID = staff.Staff_ID";
-      $trainerresult = mysqli_query($connect, $Tsql);
-
-      $Psql = "SELECT * FROM package";
-      $packageresult = mysqli_query($connect, $Psql);
-	  */
-    ?>
-   
-    <!-- Background Image -->
-    <div class="bg-image"><br><br>
-      <h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Book Coach</center></h1>
-
-      
-      <div class="container">
-        <form style="padding: 30px;" name="register" method="post" action="coachingAdd.php">
-
-          <div class="row">
-            <div class="left-col">
-              <label for="tID">Trainer </label>
-            </div>
-            <div class="right-col">
-              <select id="Trainer_ID" name="tID">
-                <option value="" hidden>--Select One--</option>
-                  <?php/*
-                    while($Trow = mysqli_fetch_array($trainerresult)) {
-                      echo '<option value='.$Trow['Trainer_ID'].'>'.$Trow['Trainer_ID'], ' - ', $Trow['Staff_Name'].'</option>';
-                    } */
-                  ?>
-              </select>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="left-col">
-              <label for="pID">Package </label>
-            </div>
-            <div class="right-col">
-              <select id="Pack_ID" name="pID">
-                <option value="" hidden>--Select One--</option>
-                  <?php/*
-                    while($Prow = mysqli_fetch_array($packageresult)) {
-                      echo '<option value='.$Prow['Pack_ID'].'>'.$Prow['Pack_ID'], ' - ', $Prow['Pack_Name'].'</option>';
-                    } */
-                  ?>
-              </select>
-            </div>
-          </div></p>
-		  
-		  <br>
-          <div style="text-align: right;" class="row">
-            <input type='button' class="btn" onclick='location.href="mainCustomer.php"' value="Back">
-			<input type='button' class="btn" onclick='location.href="editProfile.php"' value='Register'>
-          </div>
-        </form>  
-        <?php/*
-          if(isset($_SESSION["status"])){
-            echo $_SESSION["status"];
-			*/
-        }?>   
-    </div> <!-- Image div -->
-  </body> <!-- End of body -->
-</html> <!-- End of html -->
-<?php /*
-if(isset($_SESSION["status"])){
-  unset ($_SESSION["status"]);
-}*/?>
 
 <script>
-  function reloadNavbar() 
-  {
-    top.frames['header'].location.href = '../Navbar.php';
-  }
-  reloadNavbar();
+	function delFunction(cID) {
+		var r = confirm("Are you sure you want to delete this data?");
+		if(r == true) { 
+			location.href="coachingDelete.php?id=" + cID;
+		}
+	}
+</script>
+<body>
+
+	<!-- Background Image -->
+	<div class="bg-image"><br><br>
+		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Coaching Booking</center></h1>
+	
+
+		<center>
+			<table class="myTable">
+				<tr>
+				<th style="border-radius: 20px 0px 0px 0px">Coach ID</th>
+				<th>Trainer Name</th>
+				<th>Package ID</th>
+				<th style="border-radius: 0px 20px 0px 0px">     </th>
+				</tr>
+
+				<center>
+                    <?php
+                    $sesID = $_SESSION['userID'];
+					include "../connect.php";
+					$sql = "SELECT * FROM customer
+                    LEFT JOIN membership ON customer.Cust_IC = membership.Customer_IC
+                    RIGHT JOIN coaching ON member.Member_ID = coaching.Coach_ID
+                    RIGHT JOIN traianer ON coaching.Traienr_ID = trainer.Trainer_ID
+                    RIGHT JOIN staff ON trainer.Staff_ID = staff.staff_ID
+                    WHERE customer.Cust_IC = $sesID";
+					$result = mysqli_query($connect,$sql);
+					if(mysqli_num_rows($result) > 0) 
+					{
+                        foreach($result as $row) { 
+                            $cID = $row['Coach_ID'];
+                            $tID = $row['Staff_Name'];
+                            $mID = $row['Pack_ID'];
+            
+                            echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+                            echo"<td>$cID</td>";
+                            echo"<td>$tID</td>";
+                            echo"<td>$mID</td>";
+                            echo"<td>$pID</td>";
+                            echo"<td>$cTR</td>";
+
+                            echo" ";
+                            echo"</tr>";
+                        }
+                    echo mysqli_error($connect);
+				    }
+                mysqli_close($connect);
+               
+
+			    ?>
+				</center>
+			</table>
+		</center>
+			
+
+	</div> <!-- Image div -->
+</body> <!-- End of body -->
+</html> <!-- End of html -->
+
+<script>
+	function reloadNavbar() 
+	{
+		top.frames['header'].location.href = '../Navbar.php';
+	}
+	reloadNavbar();
 </script>
