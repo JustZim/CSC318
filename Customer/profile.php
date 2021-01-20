@@ -113,7 +113,6 @@
 	
 	
 	$member = mysqli_fetch_assoc(mysqli_query($connect, "SELECT * FROM MEMBERSHIP WHERE Customer_IC = '$cust_ic'"));
-	
  ?>
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
@@ -137,16 +136,28 @@
 				echo "<h3> Address	: ".$data["Cust_Address"]." </h3>"; 
 				echo "<h3> Birthdate	: ".$data["Cust_DOB"]." </h3>"; 
 				echo "<h3> Gender	: ".$data["Cust_Gender"]." </h3>"; 
+				echo "<br>";
+				echo "<h2> MEMBERSHIP </h2>";
+				if(isset($member['Member_ID'])) {
+					echo "<h3> Member ID	: ".$member["Member_ID"]." </h3>"; 
+					echo "<h3> Membership Package	: ".$member["Member_Package"]." </h3>"; 
+					echo "<h3> Membership Status	: ".$member["Customer_IC"]." </h3>"; 
+					echo "<h3> Membership Expiration Date	: ".$member["Member_ExpDate"]." </h3>";
+				}
+
+				else{
+					echo "<h3> Membership Status	: Not A Member";
+				}
 				
-				echo "<h2> MEMBERSHIP </h2>"; 
-				echo "<h3> Member ID	: ".$member["Member_ID"]." </h3>"; 
-				echo "<h3> Membership Package	: ".$member["Member_Package"]." </h3>"; 
-				echo "<h3> Membership Status	: ".$member["Customer_IC"]." </h3>"; 
-				echo "<h3> Membership Expiration Date	: ".$member["Member_ExpDate"]." </h3>";
 			
 			?>
 			<br><br>
 			<div style="text-align: right;">
+			<?php
+				if(!isset($member['Member_ID'])) {
+					echo "<input type='button' class='btn' onclick='location.href='changePass.php'' value='Register Membership'>";
+				}
+			?>
 				<input type='button' class="btn" onclick='location.href="changePass.php"' value='Change Password'>
 				<input type='button' class="btn" onclick='location.href="editProfile.php"' value='Edit Profile'>
 			</div>

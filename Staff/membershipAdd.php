@@ -63,7 +63,7 @@
         else{
             $_SESSION['status'] = "Member ID already exist in database";
         } 
-        //header("location: membershipRegister.php");
+        header("location: membershipRegister.php");
         echo mysqli_error($connect);
     }
 ?>
