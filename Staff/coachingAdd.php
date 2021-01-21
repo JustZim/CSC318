@@ -6,12 +6,19 @@
     $coachingID = $_POST['cID'];
     $trainerID = $_POST['tID'];
     $memberID = $_POST['mID'];
-    $packageID = $_POST['pID'];
     $coachTrainRemain = "30";
+
+    $Psql = "SELECT * FROM package 
+    LEFT JOIN trainer ON package.Pack_ID = trainer.Trainer_Package
+    WHERE trainer.Trainer_ID = '$trainerID'";
+    $Pack = mysqli_fetch_assoc(mysqli_query($connect, $Psql));
+
+    $packageID = $Pack['Pack_ID'];
 
     echo $coachingID, "-"; 
     echo $trainerID, "-";
     echo $memberID, "-";
+    echo $packageID, "-";
     echo $coachTrainRemain;
 
     $sql = "select * from coaching where Coach_ID = '".$coachingID."' limit 1"; 

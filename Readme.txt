@@ -34,4 +34,4 @@
 > ~~7. store only shows 1 item per row, need to make multiple (min. 2) per row.~~
 > ~~8. Login error won't show up (prolly something to do with frame).~~
 > ~~9. Price text in store spacing not right.~~
-> 10. Fix coaching, automatically choose package, or JQuerry.
+> ~~10. Fix coaching, automatically choose package, or JQuerry.~~

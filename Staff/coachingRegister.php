@@ -139,7 +139,9 @@ input[type=submit]:hover {
 
       $Tsql = "SELECT * FROM trainer
       LEFT JOIN staff
-      ON trainer.Staff_ID = staff.Staff_ID";
+      ON trainer.Staff_ID = staff.Staff_ID
+      LEFT JOIN package
+      ON trainer.Trainer_Package = package.Pack_ID";
       $trainerresult = mysqli_query($connect, $Tsql);
 
       $Psql = "SELECT * FROM package";
@@ -172,7 +174,7 @@ input[type=submit]:hover {
                 <option value="" hidden>--Select One--</option>
                   <?php
                     while($Trow = mysqli_fetch_array($trainerresult)) {
-                      echo '<option value='.$Trow['Trainer_ID'].'>'.$Trow['Trainer_ID'], ' - ', $Trow['Staff_Name'].'</option>';
+                      echo '<option value='.$Trow['Trainer_ID'].'>'.$Trow['Trainer_ID'], ' - ', $Trow['Staff_Name'], ' - ', $Trow['Pack_Name'].'</option>';
                     }
                   ?>
               </select>
@@ -195,7 +197,7 @@ input[type=submit]:hover {
             </div>
           </div>
           
-          <div class="row">
+          <!--<div class="row">
             <div class="left-col">
               <label for="pID">Package ID</label>
             </div>
@@ -203,13 +205,14 @@ input[type=submit]:hover {
               <select id="Pack_ID" name="pID">
                 <option value="" hidden>--Select One--</option>
                   <?php
-                    while($Prow = mysqli_fetch_array($packageresult)) {
+                    /*while($Prow = mysqli_fetch_array($packageresult)) {
                       echo '<option value='.$Prow['Pack_ID'].'>'.$Prow['Pack_ID'], ' - ', $Prow['Pack_Name'].'</option>';
-                    }
+                    }*/
                   ?>
               </select>
             </div>
-          </div></p>
+          </div>-->
+          </p>
 
           <div class="row">
             <center><input name="cancel" type="button" value="Back" onclick ='location.href="coachingPage.php"'>
