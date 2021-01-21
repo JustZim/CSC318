@@ -26,7 +26,7 @@ if(mysqli_query($connect,$sql))
 		print '<script> alert("Error"); </script>';
 		print '<script> window.location.assign("editProfile.php"); </script>';
 	}
-	mysqli_close($connect);
+	mysqli_close($connect); 
 ?>	
 	
 	

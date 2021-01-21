@@ -117,6 +117,7 @@ display: none;
 			include "connect.php";
 			
 			
+			
 				/*Not logged in*/
 				if($_SESSION['rank'] == 0) {
 					echo "<li><a href='main.html' target='contents'>Home</a></li>";
@@ -138,10 +139,9 @@ display: none;
 				}
 				
 				/*Customer*/
-
-				$sesID = $_SESSION['userID'];
-				$check = mysqli_fetch_assoc(mysqli_query($connect, "SELECT * FROM membership WHERE Customer_IC = '$sesID'"));
 				if($_SESSION['rank'] == 3) {
+					$sesID = $_SESSION['userID'];
+					$check = mysqli_fetch_assoc(mysqli_query($connect, "SELECT * FROM membership WHERE Customer_IC = '$sesID'"));
 					echo "<li><a href='Customer/mainCustomer.php' target='contents'>Menu</a></li>";
 					echo "<li><a href='store/store.php' target='contents'>Store</a></li>";
 					if(isset($check['Member_ID'])){
