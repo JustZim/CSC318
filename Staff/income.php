@@ -89,62 +89,77 @@
 
 <!DOCTYPE html>
 <html>
+
 <body>
 <?php 		
 	include "../sideNav.php";
-	include "../connect.php";
-	$sql = "SELECT * from trainer 
-	LEFT JOIN staff ON trainer.Staff_ID = staff.Staff_ID 
-	LEFT JOIN package ON trainer.Trainer_Package = package.Pack_ID";
-	$result = mysqli_query($connect,$sql);
-
-	$num = mysqli_num_rows($result);
 ?>
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
-		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Trainer List</center></h1>
+		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Total Income</center></h1>
 		<div class="register">
-		<center><label style="color:white; font-family: Verdana; font-size: 15px;">Trainer Count:</label><input disabled type="text" id="fname" name="fname" value='<?php echo $num; ?>'></center>
 		<br><br>
-		</div> <!-- register div -->
+		</div>
 
-		<center>
-			<table class="myTable">
-				<tr>
-				<th style="border-radius: 20px 0px 0px 0px">Trainer ID</th>
-				<th>Staf ID</th>
-				<th>Trainer Name</th>
-				<th>Trainer Package</th>
-				<th style="border-radius: 0px 20px 0px 0px">Package Details</th>				
-				    
-				</tr>
+		<?php
+			include "../connect.php";
 
-				<center>
-				<?php
-					if(mysqli_num_rows($result) > 0) 
-					{
-						foreach($result as $row) { 
-							$tID = $row['Trainer_ID'];
-							$tDetail = $row['Pack_Name'];
-							$tPackage = $row['Trainer_Package'];
-							$sID = $row['Staff_ID'];
-							$tName = $row['Staff_Name'];
-							echo "<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
-							echo "<td>$tID</td>";
-							echo "<td>$sID </td>";
-							echo "<td>$tName</td>";
-							echo "<td>$tPackage</td>";
-							echo "<td>$tDetail</td>";
-							
-							//echo "<input type='button' onclick='location.href=\"trainerDelete.php?id=$tID\"' value='Delete?'></td>";
-							echo "</tr>";
-						}
-					}
-					mysqli_close($connect);
-				?>
-				</center>
-			</table>
-		</center>
+			$qGold = "SELECT Member_Package FROM membership where Member_Package = 'Gold'";
+			$result = mysqli_query($connect,$qGold);
+			$rGold = mysqli_num_rows($result);
+			$TotGold = $rGold * 999;
+
+			$qSilver = "SELECT Member_Package FROM membership where Member_Package = 'Silver'";
+			$result = mysqli_query($connect,$qSilver);
+			$rSilver = mysqli_num_rows($result);
+			$TotSilver = $rSilver * 750;
+
+			$qBronze = "SELECT Member_Package FROM membership where Member_Package = 'Bronze'";
+			$result = mysqli_query($connect,$qBronze);
+			$rBronze = mysqli_num_rows($result);
+			$TotBronze = $rBronze * 299;
+
+			$Sum = $TotGold + $TotSilver + $TotBronze;
+
+
+		echo "<center>";
+			echo "<table class='myTable'>";
+			echo	"<tr>";
+			echo	"<th style='border-radius: 20px 0px 0px 0px'>Package</th>";
+			echo	"<th>Quantity</th>";
+			echo	"<th>Price (RM)</th>";
+			echo	"<th style='border-radius: 0px 20px 0px 0px'>Total Price (RM)</th>";
+			echo	"</tr>";
+
+			echo	"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+			echo	"<td>Gold</td>";
+			echo	"<td> $rGold </td>";
+			echo	"<td> 999 </td>";
+			echo	"<td> $TotGold</td>";
+			echo	"</tr>";
+
+			echo	"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+			echo	"<td >Silver</td>";
+			echo	"<td> $rSilver </td>";
+			echo	"<td> 750 </td>";
+			echo	"<td> $TotSilver</td>";
+			echo	"</tr>";
+
+			echo	"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+			echo	"<td>Bronze</td>";
+			echo	"<td> $rBronze </td>";
+			echo	"<td> 299 </td>";
+			echo	"<td> $TotBronze</td>";
+			echo	"</tr>";
+
+			echo	"<tr>";
+			echo	"<th  colspan='3'>Total Income (RM)</th>";
+			echo	"<th > $Sum</th>";
+			echo	"</tr>";
+		echo	"</table>";
+	echo	"</center>";
+	mysqli_close($connect);
+?>
 
 	</div> <!-- Image div -->
 </body> <!-- End of body -->
@@ -155,12 +170,12 @@
 	{
 		top.frames['header'].location.href = '../Navbar.php';
 	}
-	reloadNavbar();
-
-	function delFunction(tID) {
+    reloadNavbar();
+    
+    function delFunction(mID) {
 		var r = confirm("Are you sure you want to delete this data?");
 		if(r == true) { 
-			location.href="trainerDelete.php?id=" + tID;
+			location.href="membershipDelete.php?id=" + mID;
 		}
 	}
 </script>

@@ -50,7 +50,7 @@
 		
 	}
 	
-	.box {
+	table {
 		width: 60%;
 		display: table;
 		border: 15px solid #FFB450;
@@ -61,29 +61,7 @@
 		word-wrap: break-word;
 	}
 	
-	.left-col {
-	  background-color: #f2f2f2;
-	  display: table-cell;
-	  padding: 15px;
-	  width: 25%;
-	  margin-top: 6px;
-	}
-
-	.right-col {
-	  background: #ebe6e6;
-	  display: table-cell;
-	  padding: 30px;
-	  width: auto;
-	  margin-top: 6px;
-	  vertical-align:top;
-	}
-
-	/* Clear floats after the columns */
-	.row:after {
-	  content: "";
-	  display: table;
-	  clear: both;
-	}	
+	
 	
 	.btn {
 		background-color: #99aabb;
@@ -119,53 +97,43 @@
 		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>MY PROFILE</center></h1>
 		
 	<!-- Profile -->
-	<div class="box">
-		<div class="row">
-            <div class="left-col">
-			<image class="logo" src="../assets/images/user.png" width="200" alt="profile">
-			</div>
+	<table>
+        <td style="background-color: #f2f2f2; width: 25%;vertical-align:top; text-align:left;">
+			<br>
+			<center><image class="logo" src="../assets/images/user.png" width="200" alt="profile"></center>
+		</td>
 			
-			 <div class="right-col">
-			<?php
+		<td style=" background: #ebe6e6;padding: 30px;">
+		<?php
 			
-				echo "<h2> PROFILE</h2>"; 
-				echo "<h3> Name	: ".$data["Cust_Name"]." </h3>"; 
-				echo "<h3> IC No	: ".$data["Cust_IC"]." </h3>"; 
-				echo "<h3> Contact No	: ".$data["Cust_Contact"]." </h3>"; 
-				echo "<h3> E-mail	: ".$data["Cust_Email"]." </h3>";
-				echo "<h3> Address	: ".$data["Cust_Address"]." </h3>"; 
-				echo "<h3> Birthdate	: ".$data["Cust_DOB"]." </h3>"; 
-				echo "<h3> Gender	: ".$data["Cust_Gender"]." </h3>"; 
-				echo "<br>";
+			echo "<h2> PROFILE</h2>"; 
+			echo "<h3> Name	: ".$data["Cust_Name"]." </h3>"; 
+			echo "<h3> IC No	: ".$data["Cust_IC"]." </h3>"; 
+			echo "<h3> Contact No	: ".$data["Cust_Contact"]." </h3>"; 
+			echo "<h3> E-mail	: ".$data["Cust_Email"]." </h3>";
+			echo "<h3> Address	: ".$data["Cust_Address"]." </h3>"; 
+			echo "<h3> Birthdate	: ".$data["Cust_DOB"]." </h3>"; 
+			echo "<h3> Gender	: ".$data["Cust_Gender"]." </h3>"; 
+			echo "<br>";
+			
+			if($member) {
 				echo "<h2> MEMBERSHIP </h2>";
-				if(isset($member['Member_ID'])) {
-					echo "<h3> Member ID	: ".$member["Member_ID"]." </h3>"; 
-					echo "<h3> Membership Package	: ".$member["Member_Package"]." </h3>"; 
-					echo "<h3> Membership Status	: ".$member["Customer_IC"]." </h3>"; 
-					echo "<h3> Membership Expiration Date	: ".$member["Member_ExpDate"]." </h3>";
-				}
+				echo "<h3> Member ID	: ".$member["Member_ID"]." </h3>"; 
+				echo "<h3> Membership Package	: ".$member["Member_Package"]." </h3>"; 
+				echo "<h3> Membership Status	: ".$member["Customer_IC"]." </h3>"; 
+				echo "<h3> Membership Expiration Date	: ".$member["Member_ExpDate"]." </h3>";
+			}
 
-				else{
-					echo "<h3> Membership Status	: Not A Member";
-				}
-				
 			
-			?>
+		?>
 			<br><br>
 			<div style="text-align: right;">
-			<?php
-				if(!isset($member['Member_ID'])) {
-					echo "<input type='button' class='btn' onclick='location.href='changePass.php'' value='Register Membership'>";
-				}
-			?>
 				<input type='button' class="btn" onclick='location.href="changePass.php"' value='Change Password'>
 				<input type='button' class="btn" onclick='location.href="editProfile.php"' value='Edit Profile'>
 			</div>
-			</div>
-
-		</div>
+			</td>
 		
-	</div><!-- box div -->
+	</table>
 		
 	</div> <!-- Image div -->
 </body> <!-- End of body -->

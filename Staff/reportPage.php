@@ -128,6 +128,7 @@ input[type=submit]:hover {
         <input type="submit"  onclick='location.href="memberList.php"' value="Member List"/>
         <input type="submit"  onclick='location.href="trainerList.php"' value="Trainer List"/>
         <input type="submit"  onclick='location.href="staffList.php"' value="Staff List"/>
+		<input type="submit"  onclick='location.href="income.php"' value="Income"/>
 		</center>
 
 	</div> <!-- Image div -->

@@ -123,6 +123,7 @@ display: none;
 					echo "<li><a href='main.html' target='contents'>Home</a></li>";
 					echo "<li><a href='aboutUs.html' target='contents'>About Us</a></li>";
 					echo "<li><a href='login.php' target='contents'>Login</a></li>";
+					echo "<li><a href='Register.php' target='contents'>Sign Up</a></li>";
 				}
 
 				/*Admin & Staff*/

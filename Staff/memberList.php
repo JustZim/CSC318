@@ -93,15 +93,27 @@
 <body>
 <?php 		
 	include "../sideNav.php";
+	include "../connect.php";
+	$sql = "SELECT * FROM membership
+	LEFT JOIN customer ON membership.Customer_IC = customer.Cust_IC";
+	$result = mysqli_query($connect,$sql);
+
+	$num = mysqli_num_rows($result);
 ?>
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
 		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Membership List</center></h1>
 		<div class="register">
-		<center><label style="color:white; font-family: Verdana; font-size: 15px;">Member Count:</label><input type="text" id="fname" name="fname" value=2></center>
+
+		<center><!--<button onclick="printDiv('printMe')">Print</button>-->
+		<input name="startDate" name="endDate" type="button" value="Print" onclick ="printContent('print1')"></p>
+		<div id="print1"></center>
+
+		<center><label style="color:white; font-family: Verdana; font-size: 15px;">Member Count:</label><input disabled type="text" id="fname" name="fname" value='<?php echo $num; ?>'></center>
 		<br><br>
 		</div>
 
+		
 		<center>
 			<table class="myTable">
 				<tr>
@@ -115,45 +127,41 @@
 				</tr>
 
 				<center>
-					<?php
-					include "../connect.php";
-					$sql = "SELECT * FROM membership
-					LEFT JOIN customer ON membership.Customer_IC = customer.Cust_IC";
-					$result = mysqli_query($connect,$sql);
+				<?php
 					if(mysqli_num_rows($result) > 0) 
 					{
-					foreach($result as $row) { 
-					$mID = $row['Member_ID'];
-					$mPack = $row['Member_Package'];
-					$mStat = $row['Member_Status'];
-                    $cIC = $row['Customer_IC'];
-					$expDate = $row['Member_ExpDate'];
-					$cName = $row['Cust_Name'];
-	
-					echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
-					echo"<td>$mID</td>";
-					echo"<td>$cIC</td>";
-					echo"<td>$cName</td>";
-					echo"<td>$mPack</td>";
-                    echo"<td>$mStat</td>";
-                    echo"<td>$expDate</td>";
+						foreach($result as $row) { 
+						$mID = $row['Member_ID'];
+						$mPack = $row['Member_Package'];
+						$mStat = $row['Member_Status'];
+						$cIC = $row['Customer_IC'];
+						$expDate = $row['Member_ExpDate'];
+						$cName = $row['Cust_Name'];
+		
+						echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+						echo"<td>$mID</td>";
+						echo"<td>$cIC</td>";
+						echo"<td>$cName</td>";
+						echo"<td>$mPack</td>";
+						echo"<td>$mStat</td>";
+						echo"<td>$expDate</td>";
 
-					echo"</tr>";
+						echo"</tr>";
+						}
 					}
-				}
-				mysqli_close($connect);
-
-			?>
+					mysqli_close($connect);
+				?>
 				</center>
 			</table>
 		</center>
+		</div>
 			
 
 	</div> <!-- Image div -->
 </body> <!-- End of body -->
 </html> <!-- End of html -->
 
-<script>
+<script lang="javascript">
 	function reloadNavbar() 
 	{
 		top.frames['header'].location.href = '../Navbar.php';
@@ -166,4 +174,25 @@
 			location.href="membershipDelete.php?id=" + mID;
 		}
 	}
+
+	function printContent(el) {
+		var restore = document.body.innerHTML;
+		var printcontent = document.getElementById(el).innerHTML;
+		document.body.innerHTML = printcontent;
+		window.print();
+		document.body.innerHTML = restore;
+	}
+
+	/*function printDiv(divName){
+		var printContents = document.getElementById(divName).innerHTML;
+		var originalContents = document.body.innerHTML;
+
+		document.body.innerHTML = printContents;
+
+		window.print();
+
+		document.body.innerHTML = originalContents;
+
+	}*/
+
 </script>

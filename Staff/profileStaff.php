@@ -50,19 +50,17 @@
 		
 	}
 	
-	.box {
-		width: 45%;
+	table {
+		width: 60%;
+		display: table;
 		border: 15px solid #FFB450;
 		margin-left: auto;
 		margin-right: auto;
-		padding: 30px;
-		background: rgba(240, 240, 240, 0.3); 
+		background: rgba(240, 240, 240, 0.7); 
 		border-radius: 15px;
-		color:white;
-		overflow-wrap: break-word;
 		word-wrap: break-word;
-		text-align: center;
 	}
+	
 	
 	.btn {
 		background-color: #99aabb;
@@ -96,8 +94,12 @@
 		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>MY PROFILE</center></h1>
 		
 	<!-- Profile -->
-	<div class="box">
-		<div style="display: inline-block; text-align: left;">
+	<table>
+		 <td style="background-color: #f2f2f2; width: 25%;vertical-align:top; text-align:left;">
+			<br>
+			<center><image class="logo" src="../assets/images/user.png" width="200" alt="profile"></center>
+		</td>
+		<td style=" background: #ebe6e6;padding: 30px;">
 		<?php
 		
 			echo "<h3> Staff ID	: ".$data["Staff_ID"]." </h3>"; 
@@ -108,14 +110,13 @@
 			echo "<h3> Position	: ".$data["Staff_Position"]." </h3>";  
 		
 		?>
-		</div>
-		<br>
+		<br><br>
 		<div style="text-align: right;">
 			<input type='button' class="btn" onclick='location.href="changepassStaff.php"' value='Change Password'>
 			<input type='button' class="btn" onclick='location.href="editprofileStaff.php"' value='Edit Profile'>
 		</div>
-		
-	</div><!-- box div -->
+		</td>
+	</table>
 		
 	</div> <!-- Image div -->
 </body> <!-- End of body -->

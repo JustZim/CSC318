@@ -92,12 +92,16 @@
 <body>
 <?php 		
 	include "../sideNav.php";
+	include "../connect.php";
+	$sql = "select * from staff";
+	$result = mysqli_query($connect,$sql);
+	$num = mysqli_num_rows($result);
 ?>
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
 		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Staff List</center></h1>
 		<div class="register">
-		<center><label style="color:white; font-family: Verdana; font-size: 15px;">Staff Count:</label><input type="text" id="fname" name="fname" value=3></center>
+		<center><label style="color:white; font-family: Verdana; font-size: 15px;">Staff Count:</label><input disabled type="text" id="fname" name="fname" value='<?php echo $num; ?>'></center>
 		<br><br>
 		</div> <!-- register div -->
 
@@ -114,9 +118,6 @@
 
 				<center>
 					<?php
-					include "../connect.php";
-					$sql = "select * from staff";
-					$result = mysqli_query($connect,$sql);
 					if(mysqli_num_rows($result) > 0) 
 					{
 						foreach($result as $row) { 
