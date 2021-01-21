@@ -137,6 +137,7 @@
 						$sql = "SELECT * FROM coaching 
 						INNER JOIN trainer ON coaching.Trainer_ID = trainer.Trainer_ID
 						LEFT JOIN staff ON trainer.Staff_ID = staff.Staff_ID
+						LEFT JOIN package ON coaching.Pack_ID = package.Pack_ID
 						WHERE coaching.Member_ID = '$MEMID'";
 						$result = mysqli_query($connect,$sql);
 
@@ -146,11 +147,12 @@
 								$cID = $row['Coach_ID'];
 								$sNme = $row['Staff_Name'];
 								$pID = $row['Pack_ID'];
+								$pNme = $row['Pack_Name'];
 				
 								echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
 								echo"<td>$cID</td>";
 								echo"<td>$sNme</td>";
-								echo"<td>$pID</td>";
+								echo"<td>$pID  -  $pNme</td>";
 
 								echo"<td><input type='button' onclick='delFunction(\"$cID\")' value='Cancel'></td></td> ";
 								echo"</tr>";
