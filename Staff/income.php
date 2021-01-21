@@ -53,16 +53,16 @@
 	.myTable { 
 		table-layout:fixed ;
 		width: 80% ;
-		background: rgba(240, 240, 240, 0.3); 
+		background: rgba(240, 240, 240, 0.8); 
 		border-radius: 20px 20px 0px 0px;
 		font-family: Verdana, sans-serif;
 		font-size: 15px;
-		color:black;
+		color:white;
 		text-align: center;
 	}
 	
 	.myTable th { 
-		font-family: Verdana, sans-serif;text-shadow: 1px 1px 4px black;
+		font-family: Verdana, sans-serif;
 		font-size: 20px;
 		height: 30px;
 		letter-spacing:0.05em;
@@ -77,6 +77,7 @@
 		overflow-wrap: break-word;
 		word-wrap: break-word;
 		text-align: center;
+		color:black;
 	}
 
 	.register { 
@@ -97,9 +98,12 @@
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
 		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Total Income</center></h1>
-		<div class="register">
-		<br><br>
-		</div>
+		
+		<center>
+		<input name="startDate" name="endDate" type="button" value="Print" onclick ="printContent('print1')"></p>
+		</center>
+		
+		<br>
 
 		<?php
 			include "../connect.php";
@@ -122,7 +126,7 @@
 			$Sum = $TotGold + $TotSilver + $TotBronze;
 
 
-		echo "<center>";
+		echo "<center id='print1'>";
 			echo "<table class='myTable'>";
 			echo	"<tr>";
 			echo	"<th style='border-radius: 20px 0px 0px 0px'>Package</th>";
@@ -131,21 +135,21 @@
 			echo	"<th style='border-radius: 0px 20px 0px 0px'>Total Price (RM)</th>";
 			echo	"</tr>";
 
-			echo	"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+			echo	"<tr style='color:white;'>";
 			echo	"<td>Gold</td>";
 			echo	"<td> $rGold </td>";
 			echo	"<td> 999 </td>";
 			echo	"<td> $TotGold</td>";
 			echo	"</tr>";
 
-			echo	"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+			echo	"<tr style='color:white;'>";
 			echo	"<td >Silver</td>";
 			echo	"<td> $rSilver </td>";
 			echo	"<td> 750 </td>";
 			echo	"<td> $TotSilver</td>";
 			echo	"</tr>";
 
-			echo	"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+			echo	"<tr style='color:white;'>";
 			echo	"<td>Bronze</td>";
 			echo	"<td> $rBronze </td>";
 			echo	"<td> 299 </td>";
@@ -177,5 +181,13 @@
 		if(r == true) { 
 			location.href="membershipDelete.php?id=" + mID;
 		}
+	}
+
+	function printContent(el) {
+		var restore = document.body.innerHTML;
+		var printcontent = document.getElementById(el).innerHTML;
+		document.body.innerHTML = printcontent;
+		window.print();
+		document.body.innerHTML = restore;
 	}
 </script>

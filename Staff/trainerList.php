@@ -53,16 +53,16 @@
 	.myTable { 
 		table-layout:fixed ;
 		width: 80% ;
-		background: rgba(240, 240, 240, 0.3); 
+		background: rgba(240, 240, 240, 0.8); 
 		border-radius: 20px 20px 0px 0px;
 		font-family: Verdana, sans-serif;
 		font-size: 15px;
-		color:black;
+		color:white;
 		text-align: center;
 	}
 	
 	.myTable th { 
-		font-family: Verdana, sans-serif;text-shadow: 1px 1px 4px black;
+		font-family: Verdana, sans-serif;
 		font-size: 20px;
 		height: 30px;
 		letter-spacing:0.05em;
@@ -77,6 +77,7 @@
 		overflow-wrap: break-word;
 		word-wrap: break-word;
 		text-align: center;
+		color:black;
 	}
 
 	.register { 
@@ -103,12 +104,15 @@
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
 		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Trainer List</center></h1>
-		<div class="register">
-		<center><label style="color:white; font-family: Verdana; font-size: 15px;">Trainer Count:</label><input disabled type="text" id="fname" name="fname" value='<?php echo $num; ?>'></center>
-		<br><br>
-		</div> <!-- register div -->
+
 
 		<center>
+		<input name="startDate" name="endDate" type="button" value="Print" onclick ="printContent('print1')"></p>
+		</center>
+		<center><label style="color:white; font-family: Verdana; font-size: 15px;">Staff Count:</label><input disabled type="text" id="fname" name="fname" value='<?php echo $num; ?>'></center>
+		<br>
+
+		<center id="print1">
 			<table class="myTable">
 				<tr>
 				<th style="border-radius: 20px 0px 0px 0px">Trainer ID</th>
@@ -129,7 +133,7 @@
 							$tPackage = $row['Trainer_Package'];
 							$sID = $row['Staff_ID'];
 							$tName = $row['Staff_Name'];
-							echo "<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+							echo "<tr style='color:white;'>";
 							echo "<td>$tID</td>";
 							echo "<td>$sID </td>";
 							echo "<td>$tName</td>";
@@ -162,5 +166,13 @@
 		if(r == true) { 
 			location.href="trainerDelete.php?id=" + tID;
 		}
+	}
+
+	function printContent(el) {
+		var restore = document.body.innerHTML;
+		var printcontent = document.getElementById(el).innerHTML;
+		document.body.innerHTML = printcontent;
+		window.print();
+		document.body.innerHTML = restore;
 	}
 </script>

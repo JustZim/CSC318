@@ -18,7 +18,7 @@
 	.bg-image {
 		background-image: url("../assets/images/bg2.png");
 		background-color: #cccccc;
-		height: 3000px;
+		height: 1000px;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -53,16 +53,16 @@
 	.myTable { 
 		table-layout:fixed ;
 		width: 80% ;
-		background: rgba(240, 240, 240, 0.3); 
+		background: rgba(240, 240, 240, 0.7); 
 		border-radius: 20px 20px 0px 0px;
 		font-family: Verdana, sans-serif;
 		font-size: 15px;
-		color:black;
+		color:white;
 		text-align: center;
 	}
 	
 	.myTable th { 
-		font-family: Verdana, sans-serif;text-shadow: 1px 1px 4px black;
+		font-family: Verdana, sans-serif;
 		font-size: 20px;
 		height: 30px;
 		letter-spacing:0.05em;
@@ -77,6 +77,7 @@
 		overflow-wrap: break-word;
 		word-wrap: break-word;
 		text-align: center;
+		color:black;
 	}
 
 	.register { 
@@ -101,20 +102,17 @@
 	$num = mysqli_num_rows($result);
 ?>
 	<!-- Background Image -->
+	
 	<div class="bg-image"><br><br>
 		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Membership List</center></h1>
-		<div class="register">
-
-		<center><!--<button onclick="printDiv('printMe')">Print</button>-->
-		<input name="startDate" name="endDate" type="button" value="Print" onclick ="printContent('print1')"></p>
-		<div id="print1"></center>
-
-		<center><label style="color:white; font-family: Verdana; font-size: 15px;">Member Count:</label><input disabled type="text" id="fname" name="fname" value='<?php echo $num; ?>'></center>
-		<br><br>
-		</div>
-
 		
 		<center>
+		<input name="startDate" name="endDate" type="button" value="Print" onclick ="printContent('print1')"></p>
+		</center>
+		<center><label style="color:white; font-family: Verdana; font-size: 15px;">Member Count:</label><input disabled type="text" id="fname" name="fname" value='<?php echo $num; ?>'></center>
+		<br>
+		
+		<center id="print1">
 			<table class="myTable">
 				<tr>
 				<th style="border-radius: 20px 0px 0px 0px">Member ID</th>
@@ -138,7 +136,7 @@
 						$expDate = $row['Member_ExpDate'];
 						$cName = $row['Cust_Name'];
 		
-						echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+						echo"<tr style='color:white;'>";
 						echo"<td>$mID</td>";
 						echo"<td>$cIC</td>";
 						echo"<td>$cName</td>";
@@ -154,10 +152,11 @@
 				</center>
 			</table>
 		</center>
-		</div>
+		
 			
-
+		</div>
 	</div> <!-- Image div -->
+
 </body> <!-- End of body -->
 </html> <!-- End of html -->
 
@@ -182,17 +181,5 @@
 		window.print();
 		document.body.innerHTML = restore;
 	}
-
-	/*function printDiv(divName){
-		var printContents = document.getElementById(divName).innerHTML;
-		var originalContents = document.body.innerHTML;
-
-		document.body.innerHTML = printContents;
-
-		window.print();
-
-		document.body.innerHTML = originalContents;
-
-	}*/
 
 </script>
