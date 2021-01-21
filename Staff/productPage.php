@@ -97,9 +97,16 @@
     object-position: center;
 }
 
-input[type=submit]:hover {
-  background-color: #FFB450;
-}
+	input[type=submit]:hover {
+ 	 background-color: #FFB450;
+	}
+
+	.search { 
+		position: relative;
+		text-align:left;
+		margin-left:11%;
+		margin-bottom: 10px;
+	}
 
 </style>
 
@@ -125,11 +132,13 @@ input[type=submit]:hover {
 		<div class="register">
 			<input type='button' onclick='location.href="productRegister.php"' value='Add new Product'>
 		</div> <!-- register div -->
-
+		<div class="search">
+		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for product name.." title="Type in a name">
+		</div> <!-- search div -->
 		<center>
 
 
-			<table class="myTable">
+			<table id="product" class="myTable">
 				<tr>
 				<th style="border-radius: 20px 0px 0px 0px">Product ID</th>
 				<th>Product Name</th>
@@ -190,4 +199,23 @@ input[type=submit]:hover {
 		top.frames['header'].location.href = '../Navbar.php';
 	}
 	reloadNavbar();
+
+	function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("product");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
 </script>

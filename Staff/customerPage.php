@@ -86,6 +86,14 @@
 		margin-bottom: 10px;
 	}
 
+	.search { 
+		position: relative;
+		text-align:left;
+		margin-left:11%;
+		margin-bottom: 10px;
+	}
+
+	
 </style>
 
 <!DOCTYPE html>
@@ -109,9 +117,12 @@
 		<div class="register">
 			<input type='button' onclick='location.href="customerRegister.php"' value='Add new Customer'>
 		</div> <!-- register div -->
-
+		<div class="search">
+		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for IC.." title="Type in a name">
+		</div> <!-- search div -->
+		
 		<center>
-			<table class="myTable">
+			<table id="customer" class="myTable">
 				<tr>
 				<th style="border-radius: 20px 0px 0px 0px">IC Number</th>
 				<th>Name</th>
@@ -171,4 +182,23 @@
 		top.frames['header'].location.href = '../Navbar.php';
 	}
 	reloadNavbar();
+
+	function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("customer");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
 </script>
