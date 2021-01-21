@@ -3,7 +3,7 @@
 > Major - 
 > 1. Finish up [Coaching] section. :white_check_mark: 
 > 2. Staff [Profile] page. :white_check_mark: 
-> 3. Customer [Coaching] page, customer can choose trainer. :red_square: (need to finish)
+> 3. Customer [Coaching] page, customer can choose trainer. :white_check_mark: 
 > 4. Staff [Report] page, can count earning based on member registration / coaching / package, can track how many Membership registration, etc. :red_square: (need to finish) 
 > 
 > Minor - 
@@ -14,9 +14,9 @@
 > 5. Implement security stuff, can copy from Dental.
 > 
 > Maybe? - 
-> ||1. Customer [Register]?||
+> ||1. Customer [Register]?|| 
 > ||2. Payment database?||
-> ||3. Polish Up cutomer's [Profile] page.||
+> ||3. Polish Up cutomer's [Profile] page.|| :ballot_box_with_check:  
 > ||4. Seperate all the CSS, JS, HTML and clean all unnecessary shit.||
 > ||5. Add buy [History] for customer.||
 > ||6. If customer has membership, discount on store.||
@@ -34,3 +34,4 @@
 > ~~7. store only shows 1 item per row, need to make multiple (min. 2) per row.~~
 > ~~8. Login error won't show up (prolly something to do with frame).~~
 > ~~9. Price text in store spacing not right.~~
+> 10. Fix coaching, automatically choose package, or JQuerry.

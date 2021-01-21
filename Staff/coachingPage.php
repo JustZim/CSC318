@@ -90,15 +90,6 @@
 
 <!DOCTYPE html>
 <html>
-
-<script>
-	function delFunction(cID) {
-		var r = confirm("Are you sure you want to delete this data?");
-		if(r == true) { 
-			location.href="coachingDelete.php?id=" + cID;
-		}
-	}
-</script>
 <body>
 <?php 		
 	include "../sideNav.php";
@@ -165,4 +156,11 @@
 		top.frames['header'].location.href = '../Navbar.php';
 	}
 	reloadNavbar();
+
+	function delFunction(cID) {
+		var r = confirm("Are you sure you want to delete this data?");
+		if(r == true) { 
+			location.href="coachingDelete.php?id=" + cID;
+		}
+	}
 </script>

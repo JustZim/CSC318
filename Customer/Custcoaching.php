@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php 
+	session_start(); 
+	$sesID = $_SESSION['userID'];
+	include "../connect.php";
+	$check = mysqli_fetch_assoc(mysqli_query($connect, "SELECT * FROM membership WHERE Customer_IC = '$sesID'"));
+	$MEMID = $check['Member_ID'];
+?>
 <style>
 
 	/* Local Font */
@@ -81,8 +87,20 @@
 	.register { 
 		position: relative;
 		margin-top: 2%;
-		margin-left: 11%;
-		margin-bottom: 10px;
+		margin-bottom: 2%;
+	}
+
+	.btn {
+		background-color: #99aabb;
+		color: white;
+		padding: 12px 20px;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+
+	.btn:hover {
+	background-color: #FFB450;
 	}
 
 </style>
@@ -90,19 +108,16 @@
 <!DOCTYPE html>
 <html>
 
-<script>
-	function delFunction(cID) {
-		var r = confirm("Are you sure you want to delete this data?");
-		if(r == true) { 
-			location.href="coachingDelete.php?id=" + cID;
-		}
-	}
-</script>
 <body>
 
 	<!-- Background Image -->
 	<div class="bg-image"><br><br>
 		<h1 style="color:#FFB450; font-family: 'Barlow'; font-size: 60px;"><center>Coaching Booking</center></h1>
+		<div class="register">
+		<center>
+			<input type='button' class="btn" onclick='location.href="CustcoachingBook.php?id=<?php echo $MEMID; ?>"' value='Book Coaching Session'>
+		</center>
+		</div>
 	
 
 		<center>
@@ -116,35 +131,42 @@
 
 				<center>
                     <?php
-                    $sesID = $_SESSION['userID'];
-					include "../connect.php";
-					$sql = "SELECT * FROM customer
-                    LEFT JOIN membership ON customer.Cust_IC = membership.Customer_IC
-                    RIGHT JOIN coaching ON member.Member_ID = coaching.Coach_ID
-                    RIGHT JOIN traianer ON coaching.Traienr_ID = trainer.Trainer_ID
-                    RIGHT JOIN staff ON trainer.Staff_ID = staff.staff_ID
-                    WHERE customer.Cust_IC = $sesID";
-					$result = mysqli_query($connect,$sql);
-					if(mysqli_num_rows($result) > 0) 
-					{
-                        foreach($result as $row) { 
-                            $cID = $row['Coach_ID'];
-                            $tID = $row['Staff_Name'];
-                            $mID = $row['Pack_ID'];
-            
-                            echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
-                            echo"<td>$cID</td>";
-                            echo"<td>$tID</td>";
-                            echo"<td>$mID</td>";
-                            echo"<td>$pID</td>";
-                            echo"<td>$cTR</td>";
+					//echo $MEMID;
+					if(isset($MEMID)){
+						
+						$sql = "SELECT * FROM coaching 
+						INNER JOIN trainer ON coaching.Trainer_ID = trainer.Trainer_ID
+						LEFT JOIN staff ON trainer.Staff_ID = staff.Staff_ID
+						WHERE coaching.Member_ID = '$MEMID'";
+						$result = mysqli_query($connect,$sql);
 
-                            echo" ";
-                            echo"</tr>";
-                        }
-                    echo mysqli_error($connect);
-				    }
-                mysqli_close($connect);
+						if(mysqli_num_rows($result) > 0) 
+						{
+							foreach($result as $row) { 
+								$cID = $row['Coach_ID'];
+								$sNme = $row['Staff_Name'];
+								$pID = $row['Pack_ID'];
+				
+								echo"<tr style='color:white; text-shadow: 4px 4px 6px black ;'>";
+								echo"<td>$cID</td>";
+								echo"<td>$sNme</td>";
+								echo"<td>$pID</td>";
+
+								echo"<td><input type='button' onclick='delFunction(\"$cID\")' value='Cancel'></td></td> ";
+								echo"</tr>";
+							}
+						echo mysqli_error($connect);
+						}
+
+						else{
+							echo"<tr>";
+							echo"<td colspan='4'>You Have No Booking Registered!</td>";
+							echo"</tr>";
+						}
+					}
+
+						
+               		mysqli_close($connect);
                
 
 			    ?>
@@ -163,4 +185,11 @@
 		top.frames['header'].location.href = '../Navbar.php';
 	}
 	reloadNavbar();
+
+	function delFunction(cID) {
+		var r = confirm("Are you sure you want to Cancel this booking?");
+		if(r == true) { 
+			location.href="CustcoachingCancel.php?id=" + cID;
+		}
+	}
 </script>
